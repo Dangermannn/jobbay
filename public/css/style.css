@@ -1,0 +1,205 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap);
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 10px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.row{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.row-item{
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+}
+
+.row-item img{
+    height: 30vh;
+    width: 30vw;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.header{
+    flex-direction: column;
+    background-image: url("../img/startUpImage.svg");
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+    z-index: 1;
+}
+
+.header::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.7;
+    z-index: -1;
+}
+
+.container .logo{
+    text-align: center;
+}
+
+.container .login-form form{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+}
+
+.container .login-form form h2{
+    position: relative;
+    font-weight: 500;
+    color: #F50000EA;
+    left: 0;
+}
+
+.container .login-form form .buttons{
+    flex-direction: row;
+}
+
+.container .login-form form .buttons button{
+    border: 2px solid   #F50000EA;
+    border-radius: 4px;
+    width: 160px;
+    height: 40px;
+    background: transparent;
+    color: white;
+    margin: 0 15px;
+    font-weight: 500;
+    letter-spacing: .3rem;
+    transition: 0.4s ease background-color;
+}
+
+.container .login-form form .buttons button:hover{
+    background-color: #F50000EA;
+}
+
+.container .login-form form input{
+    background: #F1F9FF 0% 0% no-repeat padding-box;
+    border: 2px solid #F50000EA;
+    border-radius: 10px;
+    min-width: 200px;
+    padding: 20px;
+    margin: 0 0 30px 0;
+    height: 50px;
+    width: 30%;
+}
+
+/* Main page section */
+
+.header .row{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    vertical-align: center;
+    align-items: center;
+}
+.header .title p{
+    font-size: 4rem;
+    color: white;
+    text-align: left;
+}
+
+.header .row .logo {
+    position: relative;
+    top: -40px;
+    left: 10px;
+    margin-left: 50px;
+    resize: both;
+    overflow: auto;
+}
+
+.header .row .btn{
+    background-color: #F50000EA;
+    text-align: center;
+}
+
+.header .row .row-item{
+    margin: 0 50px;
+}
+
+.header .row .btn a{
+    color: white;
+    font-size: 4rem;
+    font-weight: 500;
+    padding: 20px;
+}
+
+.info{
+    height: 50vh;
+}
+
+.create-account .title{
+    vertical-align: top;
+}
+.create-account{
+    flex-direction: column;
+    background: transparent linear-gradient(180deg, #29323C 0%, #485563 100%) 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;;
+    height: 100%;
+    color: white;
+}
+
+.footer{
+    background: transparent linear-gradient(180deg, #EF5454 0%, #DE2A2A 100%) 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+/* End main page section */
+
+
+@media only screen and (max-width: 1200px){
+    .container .login-form form .buttons{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Main page section */
+    .container .row{
+        flex-direction: column;
+    }
+
+    .info{
+        height: auto;
+    }
+
+    .container .row .row-item{
+        margin: 15px 0;
+    }
+
+    .container .title p{
+        font-size: 4rem;
+        color: white;
+        text-align: center;
+    }
+
+    /* End main page section */
+}
