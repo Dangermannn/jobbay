@@ -175,6 +175,25 @@ html{
 }
 /* End main page section */
 
+/* Register Page */
+
+.container{
+    height: 100%;
+}
+
+.container .login-form textarea{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 3px solid #F50000EA;
+    border-radius: 4px;
+    width: 30%;
+}
+
+.container .login-form .buttons{
+    margin: 10px 20px;
+    padding: 10px 20px;
+}
+
+/* End Register Page */
 
 @media only screen and (max-width: 1200px){
     .container .login-form form .buttons{
@@ -201,5 +220,19 @@ html{
         text-align: center;
     }
 
+
     /* End main page section */
+
+    /* Register page */
+
+    .container .login-form form .buttons{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container .login-form form .buttons button{
+        margin-bottom: 30px;
+    }
+
+    /* End Register page */
 }
