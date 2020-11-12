@@ -38,6 +38,126 @@ html{
     justify-content: center;
 }
 
+/* Navbar */
+
+.nav {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: auto;
+}
+
+.nav .nav-bar{
+    min-height: 8vh;
+    background: #000000A3 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    display: flex;
+    flex-direction: row;
+    height: 12vh;
+    margin: 0;
+}
+
+.nav .nav-bar .logo img{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.nav .nav-list .search-bar{
+    display: flex;
+    flex-direction: row;
+    float: left;
+}
+
+.nav .nav-list .search-bar input{
+    padding: 5px;
+}
+
+.nav .nav-bar .nav-list .search-bar button{
+    background-color: #F50000EA;
+    padding: 5px;
+}
+
+.nav .nav-bar .nav-list ul{
+    position: initial;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    width: 30%;
+    float: right;
+}
+
+.nav .nav-bar .nav-list ul li{
+    text-decoration: none;
+    max-height: 80%;
+    max-width: 80%;
+}
+
+.nav .nav-bar .nav-list ul a{
+    font-size: 1.7rem;
+    font-weight: 500;
+    letter-spacing: .2rem;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* End Navbar */
+
+/* Footer */
+
+.footer{
+    background-color: #F50000EA;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    font-weight: 500;
+    text-align: center;
+}
+
+.footer .information{
+    display: flex;
+    flex-direction: row;
+    padding: 5px 10px;
+    vertical-align: middle;
+}
+
+.footer .information .info-item{
+    flex-direction: column;
+}
+
+.footer .information p,
+.footer .information a{
+    padding: 0px 20px;
+    margin: 10px 5px;  
+    font-size: 1.3rem;
+}
+
+.footer .information a{
+    color: white;
+    text-decoration: none;
+    margin: 10px 5px;
+    padding: 15px 20px;
+}
+
+.footer .icons{
+    margin: 15px 20px;
+    display: flex;
+    align-content: flex-end;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.footer .icons a img{
+    width: 1,4rem;
+    margin: 20px;
+}
+
+/* End Footer */
 
 .header{
     flex-direction: column;
@@ -166,7 +286,7 @@ html{
     color: white;
 }
 
-.footer{
+.footer-main-page{
     background: transparent linear-gradient(180deg, #EF5454 0%, #DE2A2A 100%) 0% 0% no-repeat padding-box;
     border: 1px solid #707070;
     color: white;
@@ -194,6 +314,47 @@ html{
 }
 
 /* End Register Page */
+
+
+/* Home page */
+.header-home{
+    border-style: none;
+    flex-direction: column;
+    background-image: url("../img/background-homepage.svg");
+    background-size: cover;
+    background-position:center;
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    width: 100vw;
+}
+
+.header-home::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.7;
+    z-index: -1;
+}
+
+.header-home .information{
+    text-align: center;
+    color: #2699FB;
+    font-weight: 500;
+}
+
+.header-home .information h1{
+    font-size: 10rem;
+}
+
+.header-home .information p{
+    font-size: 1.4rem;
+}
+/* End Home page */
 
 @media only screen and (max-width: 1200px){
     .container .login-form form .buttons{
