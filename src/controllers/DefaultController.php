@@ -13,4 +13,12 @@ class DefaultController extends AppController{
         // TODO display register.html
         $this->render('register');
     }
+
+    public function main_page(){
+        $this->render('main-page');
+    }
+
+    public function home(){
+        $this->render('home');
+    }
 }
