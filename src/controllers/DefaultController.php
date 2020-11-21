@@ -5,12 +5,10 @@ require_once 'AppController.php';
 class DefaultController extends AppController{
     
     public function login(){
-        // TODO display login.html\
         $this->render('login');
     }
 
     public function register(){
-        // TODO display register.html
         $this->render('register');
     }
 
