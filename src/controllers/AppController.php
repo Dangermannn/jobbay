@@ -8,9 +8,12 @@ class AppController{
         $this->request = $_SERVER['REQUEST_METHOD'];
     }
 
-    protected function isPost() : bool => $this->request === 'POST';
-    
-    protected function isGet() : bool => $this->request === 'GET';
+    protected function isPost() : bool{
+        return $this->request === 'POST';
+    }
+    protected function isGet() : bool{
+        $this->request === 'GET';
+    }
 
     protected function render(string $template = null, array $variables = []){
         $templatePath = 'public/views/'.$template.'.php';
