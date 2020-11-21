@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 html{
@@ -31,8 +32,8 @@ html{
 }
 
 .container{
-    width: 100vw;
-    height: 100vh;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -164,14 +165,13 @@ html{
 /* End Footer */
 
 .header{
-    overflow-y: hidden;
     flex-direction: column;
     background-image: url("../img/startUpImage.svg");
     background-size: cover;
     background-position: top center;
     position: relative;
     z-index: 1;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 .header::after{
@@ -504,6 +504,8 @@ html{
         color: crimson;
     }
 
+    /* End Navbar Section*/
+
     /* Footer section */
 
     .footer{
@@ -523,7 +525,7 @@ html{
 
     /* End Footer section */
 
-    /* End Navbar Section*/
+
 
     /* Main page section */
     .container .row{
