@@ -1,0 +1,7 @@
+.nav .nav-bar .nav-list ul li.search-bar{
+    position: absolute;
+    align-items: center;
+    vertical-align: middle;
+    background-color: blue;
+    padding: 100px;
+}

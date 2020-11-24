@@ -3,7 +3,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
 }
 
 html{
@@ -171,7 +170,6 @@ html{
     background-position: top center;
     position: relative;
     z-index: 1;
-    overflow: hidden;
 }
 
 .header::after{

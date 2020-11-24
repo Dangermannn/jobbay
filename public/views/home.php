@@ -15,11 +15,14 @@
 
             <div class="nav-list">
                 <div class="hamburger"><div class="bar"></div></div>
-                <div class="search-bar">
-                    <input name="search" type="text" placeholder="Search...">
-                    <button><img src="public/img/search.svg" alt=""></button>
-                </div>
+
                 <ul>
+                    <li class="search-bar">
+                        <div>
+                            <input name="search" type="text" placeholder="Search...">
+                            <button><img src="public/img/search.svg" alt=""></button>
+                        </div>
+                    </li>
                     <li>
                         <a href=""><img src="public/img/home.svg" alt="">Home</a>
                     </li>
