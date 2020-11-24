@@ -1,0 +1,36 @@
+.nav {
+    position: relative;
+    overflow-x: hidden;
+}
+
+.container{
+    margin-top: 10em;
+    margin-bottom: 10em;
+    width: 100%;
+}
+table{
+    position: relative;
+    width: 80%;
+}
+table, th, td{
+    border-collapse: collapse;
+    font-size: 1.5em;
+    border: 1px solid black;
+}
+
+table td, table th{
+    padding: 15px;
+}
+
+table th{
+    text-align: left;
+    background: #FBF4EF 0% 0% no-repeat padding-box;
+}
+
+.footer{
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow-x: hidden;
+}

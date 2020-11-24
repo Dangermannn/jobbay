@@ -12,4 +12,5 @@ Routing::post('login', 'SecurityController');
 Routing::get('register', 'DefaultController');
 Routing::get('main_page', 'DefaultController');
 Routing::get('home', 'DefaultController');
+Routing::get('job_listening', 'DefaultController');
 Routing::run($path);    
