@@ -50,122 +50,19 @@
                 <th>Details</th>
             </thead>
             <tbody>
-                <tr>
-                    <td>cos 1</td>
-                    <td>cos 2</td>
-                    <td>cos 3</td>
-                    <td><a href="">cos 4</a></td>
-                </tr>
-                <tr>
-                    <td>cos 1</td>
-                    <td>cos 2</td>
-                    <td>cos 3</td>
-                    <td><a href="">cos 4</a></td>
-                </tr>
-                <tr>
-                    <td>cos 1</td>
-                    <td>cos 2</td>
-                    <td>cos 3</td>
-                    <td><a href="">cos 4</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    
-    <div class="container">
-        <table>
-            <thead>
-                <th>Name</th>
-                <th>Localization</th>
-                <th>Experience</th>
-                <th>Details</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>cos 1</td>
-                    <td>cos 2</td>
-                    <td>cos 3</td>
-                    <td><a href="">cos 4</a></td>
-                </tr>
-                <tr>
-                    <td>cos 1</td>
-                    <td>cos 2</td>
-                    <td>cos 3</td>
-                    <td><a href="">cos 4</a></td>
-                </tr>
-                <tr>
-                    <td>cos 1</td>
-                    <td>cos 2</td>
-                    <td>cos 3</td>
-                    <td><a href="">cos 4</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-
-    
-    <div class="container">
-        <table>
-            <thead>
-                <th>Name</th>
-                <th>Localization</th>
-                <th>Experience</th>
-                <th>Details</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>cos 1</td>
-                    <td>cos 2</td>
-                    <td>cos 3</td>
-                    <td><a href="">cos 4</a></td>
-                </tr>
-                <tr>
-                    <td>cos 1</td>
-                    <td>cos 2</td>
-                    <td>cos 3</td>
-                    <td><a href="">cos 4</a></td>
-                </tr>
-                <tr>
-                    <td>cos 1</td>
-                    <td>cos 2</td>
-                    <td>cos 3</td>
-                    <td><a href="">cos 4</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-
-    
-    <div class="container">
-        <table>
-            <thead>
-                <th>Name</th>
-                <th>Localization</th>
-                <th>Experience</th>
-                <th>Details</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>cos 1</td>
-                    <td>cos 2</td>
-                    <td>cos 3</td>
-                    <td><a href="">cos 4</a></td>
-                </tr>
-                <tr>
-                    <td>cos 1</td>
-                    <td>cos 2</td>
-                    <td>cos 3</td>
-                    <td><a href="">cos 4</a></td>
-                </tr>
-                <tr>
-                    <td>cos 1</td>
-                    <td>cos 2</td>
-                    <td>cos 3</td>
-                    <td><a href="">cos 4</a></td>
-                </tr>
+                <?php
+                    if(isset($offers))
+                    {
+                        foreach($offers as $offer){
+                            echo '<tr>';
+                            echo '<td>'.$offer->getTitle().'</td>';
+                            echo '<td>'.$offer->getLocalization().'</td>';
+                            echo '<td>'.$offer->getExperience().'y</td>';
+                            echo '<td><a href="">link</a></td>';
+                            echo '</tr>';
+                        }
+                    }
+                ?>
             </tbody>
         </table>
     </div>

@@ -20,7 +20,4 @@ class DefaultController extends AppController{
         $this->render('home');
     }
 
-    public function job_listening(){
-        $this->render('job-listening');
-    }
 }

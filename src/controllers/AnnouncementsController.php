@@ -6,6 +6,11 @@ require_once __DIR__.'/../models/Announcement.php';
 
 class AnnouncementsController extends AppController{
 
+    public function job_listening(){
+        $items = $this->getAllAnnouncements();
+        $this->render('job-listening', ['offers' => $items]);
+    }
+
     public function getAnnouncement(string $username): ?Announcement{
         $user = new User('test@abcdef', 'password', 'name');
         $announcement = new Announcement($user, 'random title', 'random description',
@@ -28,6 +33,7 @@ class AnnouncementsController extends AppController{
 
 
         return [$announcement, $announcement2, $announcement3];
+        //return $this->render('job-listening', ['offers' => [$announcement, $announcement2, $announcement3]]);
     }
 
 }

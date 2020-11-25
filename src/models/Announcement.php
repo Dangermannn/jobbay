@@ -16,9 +16,9 @@ class Announcement{
         string $description,
         string $localization,
         int $experience,
-        ?array $appliers
+        array $appliers = []
     ){
-        $this->$advertiser = $advertiser;
+        $this->advertiser = $advertiser;
         $this->title = $title;
         $this->description = $description;
         $this->localization = $localization;
