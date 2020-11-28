@@ -6,7 +6,7 @@ require_once __DIR__.'/../models/Announcement.php';
 
 class AnnouncementsController extends AppController{
 
-    public function job_listening(){
+    public function jobListening(){
         $items = $this->getAllAnnouncements();
         $this->render('job-listening', ['offers' => $items]);
     }

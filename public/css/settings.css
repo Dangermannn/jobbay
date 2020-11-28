@@ -1,0 +1,30 @@
+.nav {
+    position: relative;
+    overflow-x: hidden;
+}
+
+.container{
+    margin-top: 10em;
+    margin-bottom: 10em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer{
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+@media only screen and (max-width: 1200px){
+    .nav{
+        position: fixed;
+    }
+
+    table{
+        margin-top: 3em;
+    }
+}
