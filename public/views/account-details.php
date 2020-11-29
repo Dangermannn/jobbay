@@ -42,20 +42,19 @@
     </div>
 
     <div class="container">
-        <!-- Change account details -->
-        <form action="updateAccount" method="POST">
-            <h2>Password</h2>
-            <input name="password" type="password" placeholder="password">
-            <h2>Confirm password</h2>
-            <input name="confirm-password" type="password" placeholder="password">
-            <h2>City</h2>
-            <input name="city" type="text" placeholder="city">
-            <h2>Profile description</h2>
-            <textarea name="profile-description" id="" cols="30" rows="10"></textarea>
-            <input type="file" name="cv">
-            <button>Save</button>
-        </form>
 
+        <section class="my-announcements">
+            <h1>My announcements</h1>
+            <!-- ADD TABLE WITH MY ANNOUNCEMENTS -->
+        </section>
+
+        <section class="applied-jobs">
+            <h1>Jobs I applied for</h1>
+            <!-- ADD TABLE WITH JOBS -->
+        </section>
+
+
+        <a class="link-button" href="">Change account details</a>
     </div>
 
     <div class="footer">
