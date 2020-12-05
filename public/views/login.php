@@ -13,11 +13,11 @@
             <img src="public/img/logo.svg" alt="">
         </div>
         <div class="login-form">
-            <form class="login" action="login" method="POST">
-                <div class="message">
+            <form class="login" action="loginUser" method="POST">
+                <div class="messages">
                     <?php if(isset($messages))
                             foreach($messages as $message)
-                                echo $message;
+                                echo '<p>'.$message.'</p>';
                     ?>
                 </div>
                 <h2>Email</h2>
