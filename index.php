@@ -15,5 +15,8 @@ Routing::get('home', 'DefaultController');
 
 Routing::get('jobListening', 'AnnouncementsController');
 Routing::get('accountSettings', 'AccountController');
+Routing::get('accountDetails', 'AccountController');
+
+Routing::post('updateAccount', 'AccountController');
 
 Routing::run($path);    

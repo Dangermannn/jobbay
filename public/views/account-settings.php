@@ -42,8 +42,20 @@
     </div>
 
     <div class="container">
+
+
+        <div class="messages">
+            <?php
+                if(isset($messages)){
+                    foreach($messages as $message) {
+                        echo $message;
+                    }
+                }
+            ?>
+        </div>
+
         <!-- Change account details -->
-        <form action="updateAccount" method="POST">
+        <form action="updateAccount" method="POST" ENCTYPE="multipart/form-data">
             <h2>Password</h2>
             <input name="password" type="password" placeholder="password">
             <h2>Confirm password</h2>
@@ -52,8 +64,8 @@
             <input name="city" type="text" placeholder="city">
             <h2>Profile description</h2>
             <textarea name="profile-description" id="" cols="30" rows="10"></textarea>
-            <input type="file" name="cv">
-            <button>Save</button>
+            <input type="file" name="file">
+            <button type="submit">Save</button>
         </form>
 
     </div>

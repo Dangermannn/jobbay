@@ -43,6 +43,16 @@
 
     <div class="container">
 
+        <div class="messages">
+            <?php
+                if(isset($messages)){
+                    foreach($messages as $message) {
+                        echo $message;
+                    }
+                }
+            ?>
+        </div>
+
         <section class="my-announcements">
             <h1>My announcements</h1>
             <!-- ADD TABLE WITH MY ANNOUNCEMENTS -->
