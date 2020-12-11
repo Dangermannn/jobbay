@@ -3,8 +3,18 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../models/Announcement.php';
+require_once  __DIR__.'/../repository/AnnouncementRepository.php';
+
 
 class AnnouncementsController extends AppController{
+
+    private $projectRepository;
+
+    public function __construct($projectRepository)
+    {
+        parent::_construct();
+        $this->projectRepository = $projectRepository;
+    }
 
     public function jobListening(){
         $items = $this->getAllAnnouncements();
@@ -15,6 +25,7 @@ class AnnouncementsController extends AppController{
         $user = new User('test@abcdef', 'password', 'name');
         $announcement = new Announcement($user, 'random title', 'random description',
             'Warsaw', 5);
+
 
         if(($announcement->getUser())->getName() === $username){
             return $announcement;
@@ -36,4 +47,9 @@ class AnnouncementsController extends AppController{
         //return $this->render('job-listening', ['offers' => [$announcement, $announcement2, $announcement3]]);
     }
 
+    public function addAnnouncement(): void{
+
+        $announcement = new Announcement($_POST['user'], $_POST['title'], $_POST['description'], $_POST['localization'], $_POST['experience']);
+        $this->projectRepository->addAnnouncement($announcement);
+    }
 }

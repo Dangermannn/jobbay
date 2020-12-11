@@ -10,6 +10,7 @@ class Announcement{
     private $experience;
     private $appliers;
 
+    /*
     public function __construct(
         User $advertiser,
         string $title,
@@ -24,6 +25,18 @@ class Announcement{
         $this->localization = $localization;
         $this->experience = $experience;
         $this->appliers = $appliers;
+    }
+*/
+    public function __construct(
+        string $title,
+        string $description,
+        string $localization,
+        int $experience
+    ){
+        $this->title = $title;
+        $this->description = $description;
+        $this->localization = $localization;
+        $this->experience = $experience;
     }
 
     public function getUser(): User{
