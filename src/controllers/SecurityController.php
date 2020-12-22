@@ -48,10 +48,13 @@ class SecurityController extends AppController{
         $city = $_POST["city"];
         $description = $_POST["profile-description"];
 
+        $user = $userRepository->getUser($email);
+        if($user != null)
+            return $this->render('register', ['messages' => ["Account with that email already exists"]]);
+        
         $userRepository->registerUser($email, $name, $city, $password, $description);
 
         //header("Location: {$url}/login");
         $this->render('login', ['messages' => ['Account has been created successfully!']]);
     }
-
 }
