@@ -13,7 +13,7 @@
             <img src="public/img/logo.svg" alt="">
         </div>
         <div class="login-form">
-            <form action="">
+            <form class="register" action="registerUser" method="POST">
                 <h2>Email</h2>
                 <input name="email" type="text" placeholder="email@email.com">
                 <h2>Password</h2>

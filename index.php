@@ -9,7 +9,9 @@ Routing::get('login', 'DefaultController');
 Routing::post('loginUser', 'SecurityController');
 
 
-Routing::get('register', 'DefaultController');
+Routing::get('register', 'SecurityController');
+Routing::post('registerUser', 'SecurityController');
+
 Routing::get('main_page', 'DefaultController');
 Routing::get('home', 'DefaultController');
 

@@ -10,6 +10,12 @@ class SecurityController extends AppController{
     {
         $this->render('login');
     }
+
+    public function register()
+    {
+        $this->render('register');
+    }
+
     public function loginUser(){
 
         $userRepository = new UserRepository();
@@ -32,4 +38,20 @@ class SecurityController extends AppController{
         header("Location: {$url}/home");
         //return $this->render('home');  
     }
+
+    public function registerUser(){
+        $userRepository = new UserRepository();
+        
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $name = $_POST["profile-name"];
+        $city = $_POST["city"];
+        $description = $_POST["profile-description"];
+
+        $userRepository->registerUser($email, $name, $city, $password, $description);
+
+        //header("Location: {$url}/login");
+        $this->render('login', ['messages' => ['Account has been created successfully!']]);
+    }
+
 }
