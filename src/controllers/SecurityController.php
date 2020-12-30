@@ -4,7 +4,8 @@ require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../repository/UserRepository.php';
 
-class SecurityController extends AppController{
+class SecurityController extends AppController
+{
 
     public function login()
     {
@@ -16,7 +17,8 @@ class SecurityController extends AppController{
         $this->render('register');
     }
 
-    public function loginUser(){
+    public function loginUser()
+    {
 
         $userRepository = new UserRepository();
 
@@ -31,15 +33,16 @@ class SecurityController extends AppController{
         if(!$user)
             return $this->render('login', ['messages' => ['User with this email does not exist']]);
         
-       // if($user->getPassword() !== $password)
-         //   return $this->render('login', ['messages' => ['Incorrect password']]);
+    
         if(!password_verify($password, $user->getPassword()))
             return $this->render('login', ['messages' => ['Incorrect password']]);
-        
+    
+        session_start();
+        $_SESSION["loggedIn"] = true;
+        $_SESSION["email"] = $email;
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");
-        //return $this->render('home');  
     }
 
     public function registerUser(){
@@ -58,5 +61,13 @@ class SecurityController extends AppController{
         $userRepository->registerUser($email, $name, $city, $password, $description);
 
         $this->render('login', ['messages' => ['Account has been created successfully!']]);
+    }
+
+    public function logout()
+    {
+        session_start();
+        unset($_SESSION["loggedIn"]);
+        unset($_SESSION["email"]);
+        $this->render('login', ['messages' => ['You have been logout successfully!']]);
     }
 }

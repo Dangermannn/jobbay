@@ -17,6 +17,11 @@ class AnnouncementsController extends AppController{
     }
 
     public function jobListening(){
+        session_start();
+        if($_SESSION["loggedIn"] != true) {
+            echo("Access denied!");
+            exit();
+        }
         $items = $this->getAllAnnouncements();
         $this->render('job-listening', ['offers' => $items]);
     }

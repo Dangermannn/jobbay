@@ -13,10 +13,20 @@ class AccountController extends AppController{
     private $messages = [];
 
     public function accountDetails(){
+        session_start();
+        if($_SESSION["loggedIn"] != true) {
+            echo("Access denied!");
+            exit();
+        }
         $this->render('account-details');
     }
 
     public function accountSettings(){
+        session_start();
+        if($_SESSION["loggedIn"] != true) {
+            echo("Access denied!");
+            exit();
+        }
         $this->render('account-settings');
     }
 

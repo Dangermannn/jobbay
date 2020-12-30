@@ -24,16 +24,16 @@
                         </div>
                     </li>
                     <li>
-                        <a href=""><img src="public/img/home.svg" alt="">Home</a>
+                        <a href="home"><img src="public/img/home.svg" alt="">Home</a>
                     </li>
                     <li>
-                        <a href=""><img src="public/img/message.svg" alt="">Messages</a>
+                        <a href="messages"><img src="public/img/message.svg" alt="">Messages</a>
                     </li>
                     <li>                        
-                        <a href=""><img src="public/img/account.svg" alt="">Account</a>
+                        <a href="accountSettings"><img src="public/img/account.svg" alt="">Account</a>
                     </li>
                     <li>                        
-                        <a href=""><img src="public/img/logout.svg" alt="">Logout</a>
+                        <a href="src/controllers/helpers/ClearSession.php"><img src="public/img/logout.svg" alt="">Logout</a>
                     </li>
                 </ul>
             </div>
