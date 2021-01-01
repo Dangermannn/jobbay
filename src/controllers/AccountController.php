@@ -3,6 +3,7 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../models/Announcement.php';
+require_once __DIR__.'/../repository/UserRepository.php';
 
 class AccountController extends AppController{
 
@@ -32,6 +33,18 @@ class AccountController extends AppController{
 
 
     public function updateAccount(){
+        $userRepository = new UserRepository();
+
+        $password = $_POST["password"];
+
+        if($password != $_POST["confirm-password"])
+            return $this->render('account-settings', ['Passwords does not match!']);
+
+
+        $city = $_POST["city"];
+        $description = $_POST["profile-description"];
+
+        $userRepository->updateUser($password, $city, $description, $_FILES['file']['tmp_name']);
         if(is_uploaded_file($_FILES['file']['tmp_name']) && $this->isFileValid($_FILES['file'])){
             
             move_uploaded_file(

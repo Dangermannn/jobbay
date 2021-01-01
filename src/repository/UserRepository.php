@@ -39,4 +39,54 @@ class UserRepository extends Repository
             $description
         ]);
     }
+
+    public function updateUser(string $password, string $city, string $description, string $cv_path)
+    {
+        //if($password == null && $city == null && $description == null && $cv_path == null)
+        //    return;
+        if(!isset($_SESSION))
+            session_start();
+        $st = "UPDATE public.users SET ";
+        if($password != null)
+        {
+            if(strlen($password) < 8)
+                return;
+            $st."password='".$password."'";
+        }
+
+        if($city != null)
+        {
+            if(substr($st, -1) == "'")
+                $st = $st.", "."city='".$city."'";
+            else
+                $st = $st."city='".$city."'";
+
+        }
+
+        if($description != null)
+        {
+            if(substr($st, -1) == "'")
+                $st = $st.", "."description='".$description."'";
+            else
+                $st = $st."description='".$description."'";
+                
+        }
+        
+        if($cv_path != null)
+        {   
+            if(substr($st, -1) == "'")
+                $st = $st.", "."cv_path='".$cv_path."'";
+            else
+                $st = $st."cv_path='".$cv_path."'";
+
+        }
+
+        $email = $_SESSION['email'];
+
+        $statement = $this->database->connect()->prepare(
+            $st." WHERE email='".$email."'"
+        );
+
+        $statement->execute();
+    }
 }

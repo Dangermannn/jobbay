@@ -12,7 +12,11 @@ class AppController{
         return $this->request === 'POST';
     }
     protected function isGet() : bool{
-        $this->request === 'GET';
+        return $this->request === 'GET';
+    }
+
+    protected function isPut() : bool{
+        return $this->request === 'PUT';
     }
 
     protected function render(string $template = null, array $variables = []){
