@@ -2,7 +2,9 @@
 
 require_once __DIR__.'/../models/User.php';
 
-class Announcement{
+class Announcement
+{
+
     private $advertiser;
     private $title;
     private $description;
@@ -32,7 +34,8 @@ class Announcement{
         string $description,
         string $localization,
         int $experience
-    ){
+    )
+    {
         $this->title = $title;
         $this->description = $description;
         $this->localization = $localization;
@@ -40,22 +43,46 @@ class Announcement{
     }
 
     public function getUser(): User{
+
         return $this->advertiser;
     }
 
-    public function getTitle(): string{
+    public function getTitle(): string
+    {
         return $this->title;
     }
 
-    public function getDescription(): string{
+    public function getDescription(): string
+    {
         return $this->description;
     }
 
-    public function getLocalization(): string{
+    public function getLocalization(): string
+    {
         return $this->localization;
     }
 
-    public function getExperience(): int{
+    public function getExperience(): int
+    {
         return $this->experience;
+    }
+    public function getAdvertiser()
+    {
+        return $this->advertiser;
+    }
+
+    public function setAdvertiser($advertiser): void
+    {
+        $this->advertiser = $advertiser;
+    }
+
+    public function getAppliers()
+    {
+        return $this->appliers;
+    }
+
+    public function setAppliers($appliers): void
+    {
+        $this->appliers = $appliers;
     }
 }

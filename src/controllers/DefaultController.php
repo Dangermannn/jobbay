@@ -13,21 +13,27 @@ class DefaultController extends AppController{
     }
 
     public function main_page(){
-        session_start();
-        if($_SESSION["loggedIn"] != true) {
-            echo("Access denied!");
-            exit();
-        }
+        handleSession();
         $this->render('main-page');
     }
 
     public function home(){
+        handleSession();
+        $this->render('home');
+    }
+
+    public function searchJob(){
+        handleSession();
+        $this->render('jobListening');
+    }
+
+    public function handleSession()
+    {
         session_start();
-        if($_SESSION["loggedIn"] != true) {
+        if($_SESSION["loggedIn" != true]){
             echo("Access denied!");
             exit();
         }
-        $this->render('home');
     }
 
 }

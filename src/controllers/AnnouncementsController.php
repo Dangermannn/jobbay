@@ -6,15 +6,8 @@ require_once __DIR__.'/../models/Announcement.php';
 require_once  __DIR__.'/../repository/AnnouncementRepository.php';
 
 
-class AnnouncementsController extends AppController{
-
-    private $projectRepository;
-
-    public function __construct($projectRepository)
-    {
-        parent::_construct();
-        $this->projectRepository = $projectRepository;
-    }
+class AnnouncementsController extends AppController
+{
 
     public function jobListening(){
         session_start();
@@ -22,14 +15,17 @@ class AnnouncementsController extends AppController{
             echo("Access denied!");
             exit();
         }
-        $items = $this->getAllAnnouncements();
+        $search_key = $_POST['keyword'] == null ? "" : $_POST['keyword'];
+        
+        $items = $this->getAllAnnouncements($search_key);
         $this->render('job-listening', ['offers' => $items]);
     }
 
-    public function getAnnouncement(string $username): ?Announcement{
+    public function getAnnouncement(string $username): ?array{
         $user = new User('test@abcdef', 'password', 'name');
-        $announcement = new Announcement($user, 'random title', 'random description',
+        $announcement = new Announcement('random title', 'random description',
             'Warsaw', 5);
+        $announcement->setAdvertiser($user);
 
 
         if(($announcement->getUser())->getName() === $username){
@@ -38,18 +34,21 @@ class AnnouncementsController extends AppController{
         return null;
     }
 
-    public function getAllAnnouncements(): array {
+    public function getAllAnnouncements(string $key): array {
+        
         $user = new User('test@abcdef', 'password', 'name');
-        $announcement = new Announcement($user, 'random title', 'random description',
+        $announcement = new Announcement('random title', 'random description',
             'Warsaw', 5);
-        $announcement2 = new Announcement($user, 'random title2', 'random description2',
+        $announcement2 = new Announcement('random title2', 'random description2',
             'Warsaw2', 3);
-        $announcement3 = new Announcement($user, 'random title3', 'random description4',
+        $announcement3 = new Announcement('random title3', 'random description4',
             'Warsaw5', 3);
 
+        $repo = new AnnouncementRepository();
 
-        return [$announcement, $announcement2, $announcement3];
-        //return $this->render('job-listening', ['offers' => [$announcement, $announcement2, $announcement3]]);
+        return $repo->getAnnouncement($key);
+
+        //return [$announcement, $announcement2, $announcement3];
     }
 
     public function addAnnouncement(): void{

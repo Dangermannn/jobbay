@@ -19,22 +19,22 @@
 
                 <ul>
                     <li class="search-bar">
-                        <div>
-                            <input name="search" type="text" placeholder="Search...">
-                            <button><img src="public/img/search.svg" alt=""></button>
-                        </div>
+                        <form action="jobListening" method="POST">
+                            <input name="keyword" type="text" placeholder="Search...">
+                            <button type="submit"><img src="public/img/search.svg" alt=""></button>
+                        </form>
                     </li>
                     <li>
-                        <a href=""><img src="public/img/home.svg" alt="">Home</a>
+                        <a href="home"><img src="public/img/home.svg" alt="">Home</a>
                     </li>
                     <li>
-                        <a href=""><img src="public/img/message.svg" alt="">Messages</a>
+                        <a href="messages"><img src="public/img/message.svg" alt="">Messages</a>
                     </li>
                     <li>                        
-                        <a href=""><img src="public/img/account.svg" alt="">Account</a>
+                        <a href="accountSettings"><img src="public/img/account.svg" alt="">Account</a>
                     </li>
                     <li>                        
-                        <a href=""><img src="public/img/logout.svg" alt="">Logout</a>
+                        <a href="src/controllers/helpers/ClearSession.php"><img src="public/img/logout.svg" alt="">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -55,10 +55,10 @@
                     {
                         foreach($offers as $offer){
                             echo '<tr>';
-                            echo '<td>'.$offer->getTitle().'</td>';
-                            echo '<td>'.$offer->getLocalization().'</td>';
-                            echo '<td>'.$offer->getExperience().'y</td>';
-                            echo '<td><a href="">link</a></td>';
+                            echo '<td>'.$offer['title'].'</td>';
+                            echo '<td>'.$offer['localization'].'</td>';
+                            echo '<td>'.$offer['experience'].'y</td>';
+                            echo '<td><a href="jobListening/'.$offer['id'].'">link</a></td>';
                             echo '</tr>';
                         }
                     }
