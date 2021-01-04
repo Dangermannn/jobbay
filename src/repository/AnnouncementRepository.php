@@ -6,7 +6,8 @@ require_once  __DIR__.'/../models/Announcement.php';
 
 class AnnouncementRepository extends Repository
 {
-    public function getAnnouncement(string $key) : ?array{
+    public function getAnnouncement(string $key) : ?array
+    {
         $temp = "%$key%";
         $statement = $this->database->connect()->prepare(
           "SELECT * FROM public.announcements WHERE LOWER(title) LIKE LOWER(:s) OR LOWER(description) LIKE LOWER(:s)
@@ -22,7 +23,20 @@ class AnnouncementRepository extends Repository
 
     }
 
-    public function addAnnouncement(Announcement $announcement): void{
+    public function getAnnouncementById(int $id)
+    {
+        $statement = $this->database->connect()->prepare(
+          "SELECT * FROM public.announcements WHERE id = :id"
+        );
+
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function addAnnouncement(Announcement $announcement): void
+    {
         $date = new DateTime();
         $statement = $this->database->connect()->prepare(
             "INSERT INTO public.announcements 

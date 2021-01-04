@@ -13,17 +13,17 @@ class DefaultController extends AppController{
     }
 
     public function main_page(){
-        handleSession();
+        //handleSession();
         $this->render('main-page');
     }
 
     public function home(){
-        handleSession();
+        //handleSession();
         $this->render('home');
     }
 
     public function searchJob(){
-        handleSession();
+        //handleSession();
         $this->render('jobListening');
     }
 

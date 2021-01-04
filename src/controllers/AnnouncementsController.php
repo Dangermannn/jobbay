@@ -9,7 +9,8 @@ require_once  __DIR__.'/../repository/AnnouncementRepository.php';
 class AnnouncementsController extends AppController
 {
 
-    public function jobListening(){
+    public function jobListening()
+    {
         session_start();
         if($_SESSION["loggedIn"] != true) {
             echo("Access denied!");
@@ -21,7 +22,20 @@ class AnnouncementsController extends AppController
         $this->render('job-listening', ['offers' => $items]);
     }
 
-    public function getAnnouncement(string $username): ?array{
+    public function announcementDetails()
+    {
+        $url = $_SERVER['REQUEST_URI'];
+        $id = substr($url, strrpos($url, '/') + 1);
+
+        $repo = new AnnouncementRepository();
+
+        $announcement = $repo->getAnnouncementById(intval($_GET['id']));
+        
+        $this->render('announcement-details', ['data' => $announcement]); // announcement-details
+    }
+
+    public function getAnnouncement(string $username): ?array
+    {
         $user = new User('test@abcdef', 'password', 'name');
         $announcement = new Announcement('random title', 'random description',
             'Warsaw', 5);
@@ -34,7 +48,8 @@ class AnnouncementsController extends AppController
         return null;
     }
 
-    public function getAllAnnouncements(string $key): array {
+    public function getAllAnnouncements(string $key): array 
+    {
         
         $user = new User('test@abcdef', 'password', 'name');
         $announcement = new Announcement('random title', 'random description',
@@ -51,8 +66,8 @@ class AnnouncementsController extends AppController
         //return [$announcement, $announcement2, $announcement3];
     }
 
-    public function addAnnouncement(): void{
-
+    public function addAnnouncement(): void
+    {
         $announcement = new Announcement($_POST['user'], $_POST['title'], $_POST['description'], $_POST['localization'], $_POST['experience']);
         $this->projectRepository->addAnnouncement($announcement);
     }

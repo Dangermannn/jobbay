@@ -16,6 +16,8 @@ Routing::get('main_page', 'DefaultController');
 Routing::get('home', 'DefaultController');
 
 Routing::get('jobListening', 'AnnouncementsController');
+Routing::get('announcementDetails', 'AnnouncementsController');
+
 Routing::get('accountSettings', 'AccountController');
 Routing::get('accountDetails', 'AccountController');
 
