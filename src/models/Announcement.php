@@ -51,33 +51,21 @@ class Announcement
             $this->advertiser = $advertiser;
     }
 
-    /**
-     * @return int
-     */
     public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @param int $id
-     */
     public function setId(int $id): void
     {
         $this->id = $id;
     }
 
-    /**
-     * @return string
-     */
     public function getAdded(): string
     {
         return $this->added;
     }
 
-    /**
-     * @param string $added
-     */
     public function setAdded(string $added): void
     {
         $this->added = $added;

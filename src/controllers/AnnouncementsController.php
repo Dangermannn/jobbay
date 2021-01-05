@@ -50,20 +50,9 @@ class AnnouncementsController extends AppController
 
     public function getAllAnnouncements(string $key): array 
     {
-        
-        $user = new User('test@abcdef', 'password', 'name');
-        $announcement = new Announcement('random title', 'random description',
-            'Warsaw', 5);
-        $announcement2 = new Announcement('random title2', 'random description2',
-            'Warsaw2', 3);
-        $announcement3 = new Announcement('random title3', 'random description4',
-            'Warsaw5', 3);
-
         $repo = new AnnouncementRepository();
 
         return $repo->getAnnouncement($key);
-
-        //return [$announcement, $announcement2, $announcement3];
     }
 
     public function addAnnouncement(): void

@@ -8,19 +8,30 @@ class AnnouncementRepository extends Repository
 {
     public function getAnnouncement(string $key) : ?array
     {
+        $return = [];
+
         $temp = "%$key%";
         $statement = $this->database->connect()->prepare(
           "SELECT * FROM public.announcements WHERE LOWER(title) LIKE LOWER(:s) OR LOWER(description) LIKE LOWER(:s)
-    ");
+        ");
 
         $statement->bindParam(':s', $temp, PDO::PARAM_STR);
         $statement->execute();
 
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        //$arr = (object) $announcements;
-        //return $arr;
-
+        $announcements = $statement->fetchAll(PDO::FETCH_ASSOC);
+        
+        foreach($announcements as $announcement){
+            $return[] = new Announcement(
+                $announcement['title'],
+                $announcement['description'],
+                $announcement['localization'],
+                intval($announcement['experience']),
+                $announcement['added'],
+                intval($announcement['id']),
+                
+            );
+        }
+        return $return;
     }
 
     public function getAnnouncementById(int $id) : Announcement

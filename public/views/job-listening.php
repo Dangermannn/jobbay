@@ -53,12 +53,22 @@
                 <?php
                     if(isset($offers))
                     {
+                        /*
                         foreach($offers as $offer){
                             echo '<tr>';
                             echo '<td>'.$offer['title'].'</td>';
                             echo '<td>'.$offer['localization'].'</td>';
                             echo '<td>'.$offer['experience'].'y</td>';
                             echo '<td><a href="jobListening/'.$offer['id'].'">link</a></td>';
+                            echo '</tr>';
+                        }
+                        */
+                        foreach($offers as $offer){
+                            echo '<tr>';
+                            echo '<td>'.$offer->getTitle().'</td>';
+                            echo '<td>'.$offer->getLocalization().'</td>';
+                            echo '<td>'.$offer->getExperience().'y</td>';
+                            echo '<td><a href="announcementDetails?id='.$offer->getId().'">link</a></td>';
                             echo '</tr>';
                         }
                     }
