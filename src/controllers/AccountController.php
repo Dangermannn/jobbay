@@ -32,6 +32,12 @@ class AccountController extends AppController{
     }
 
 
+    public function accountInfo(){
+        $repo = new UserRepository();
+        $user = $repo->getUser($_GET['email']);
+        $this->render('user-info', ['data' => $user]);
+    }
+
     public function updateAccount(){
         $userRepository = new UserRepository();
 

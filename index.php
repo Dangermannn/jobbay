@@ -20,6 +20,7 @@ Routing::get('announcementDetails', 'AnnouncementsController');
 
 Routing::get('accountSettings', 'AccountController');
 Routing::get('accountDetails', 'AccountController');
+Routing::get('accountInfo', 'AccountController');
 
 Routing::post('updateAccount', 'AccountController');
 

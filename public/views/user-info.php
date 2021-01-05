@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/style.css">
-    <link rel="stylesheet" href="public/css/job-listening.css">
+    <link rel="stylesheet" href="public/css/user-info.css">
     <title>Document</title>
 </head>
 <body>
@@ -42,31 +42,28 @@
     </div>
 
     <div class="container">
-        <table>
-            <thead>
-                <th>Name</th>
-                <th>Localization</th>
-                <th>Experience</th>
-                <th>Details</th>
-            </thead>
-            <tbody>
-                <?php
-                    if(isset($offers))
-                    {
-                        foreach($offers as $offer){
-                            echo '<tr>';
-                            echo '<td>'.$offer->getTitle().'</td>';
-                            echo '<td>'.$offer->getLocalization().'</td>';
-                            echo '<td>'.$offer->getExperience().'y</td>';
-                            echo '<td><a href="announcementDetails?id='.$offer->getId().'">link</a></td>';
-                            echo '</tr>';
-                        }
-                    }
-                ?>
-            </tbody>
-        </table>
+        <div class="user">
+                <h1>About user</h1>
+                <hr>
+                <div class="details">
+                    <?php 
+                        echo '<div class="item"><span>Username:</span> '.$data->getName().'</div>';
+                        echo '<div class="item"><span>Email:</span> '.$data->getEmail().'</div>';
+                        echo '<div class="item"><span>City:</span> '.$data->getCity().'y</div>';
+                    ?>
+                </div>
+                <hr>
+                <h1>DESCRIPTION</h1>
+                <hr>
+                <div class="description">
+                    <?php
+                        echo '<p>'.$data->getDescription().'</p>';
+                    ?>
+                </div>
+            </div>
+            
+        </div>
     </div>
-
 
     <div class="footer">
         <div class="information">

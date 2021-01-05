@@ -1,19 +1,16 @@
-span{
-    color: red;
-    font-weight: 1000;
-    letter-spacing: 0.1em;
-}
 
 .container{
     margin: 15vh 0em;
     padding: 2em;
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
+    align-items: center;
     font-size: 1.5em;
+    overflow-x: hidden;
 }
 
-.announcement{
+.user{
     padding: 5em;
     margin: 5em;
     background: #FFFFFF00 0% 0% no-repeat padding-box;
@@ -24,23 +21,25 @@ span{
     width: 100%;
 }
 
-.announcement .details{
-    font-size: 1.9em;
+.user .details{
+    font-size: 1.3em;
     margin: 0 15px;
 }
 
-.announcement .item{
-    margin: 20px 30px;
-    grid-template-columns: repeat(4, 1fr);
+.user .item{
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    margin: 20px 30px;
+    font-size: 1.9em;
 }
 
-.announcement .description{
+.user .description{
     margin: 20px 0;
+    font-size: 1.6em;
 }
 
-.announcement button{
+.user button{
     border: 2px solid   #F50000EA;
     border-radius: 4px;
     width: 160px;
@@ -55,10 +54,11 @@ span{
     transition: 0.4s ease background-color;
 }
 
-.announcement button:hover{
+.user button:hover{
     background-color: #F50000EA;
     color: white;
 }
+
 
 
 h1{
@@ -71,11 +71,18 @@ h2{
     font-weight: 300;
 }
 
+.footer{
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
 hr{
     margin: 40px 0 30px 0;
 }
 
-p{
-    font-size: 1.6em;
+span{
+    color: red;
+    font-weight: 1000;
+    letter-spacing: 0.1em;
 }
 

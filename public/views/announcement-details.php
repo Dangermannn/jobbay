@@ -51,18 +51,22 @@
                         echo "<h1>".$data->getTitle()."</h1>";
                     }
                     ?>
+                    <hr>
                 <div class="details">
                     <?php 
-                        echo '<div class="item">Localization: '.$data->getLocalization().'</div>';
-                        echo '<div class="item">'.$data->getAdvertiser().'</div>';
-                        echo '<div class="item">Experience: '.$data->getExperience().'y</div>';
-                        echo '<div class="item">Announcer: '.$data->getAdvertiser().'</div>';
-                        echo '<div class="item">Added: '.$data->getAdded().'</div>';
+                        echo '<div class="item"><span>Username:</span> '.$data->getLocalization().'</div>';
+                        echo '<div class="item"><span>Email:</span> <a href="/accountInfo?email='.$data->getAdvertiser().'">'.$data->getAdvertiser().'</a></div>';
+                        echo '<div class="item"><span>Experience:</span> '.$data->getExperience().'y</div>';
+                        echo '<div class="item"><span>Announcer:</span> '.$data->getAdvertiser().'</div>';
+                        echo '<div class="item"><span>Added:</span> '.$data->getAdded().'</div>';
                     ?>
                 </div>
                 
+                <hr>
+                
                 <div class="description">
                     <h1>DESCRIPTION</h1>
+                    <hr>
                     <?php
                         echo '<p>'.$data->getDescription().'</p>';
                     ?>
