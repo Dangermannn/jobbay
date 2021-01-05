@@ -13,6 +13,7 @@ class AnnouncementRepository extends Repository
         $temp = "%$key%";
         $statement = $this->database->connect()->prepare(
           "SELECT * FROM public.announcements WHERE LOWER(title) LIKE LOWER(:s) OR LOWER(description) LIKE LOWER(:s)
+          ORDER BY added
         ");
 
         $statement->bindParam(':s', $temp, PDO::PARAM_STR);
