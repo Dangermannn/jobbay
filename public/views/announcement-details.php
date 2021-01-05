@@ -48,20 +48,24 @@
                     <?php
                     if(isset($data)){
                         //echo $temp;
-                        echo "<h1>".$data['title']."</h1>";
+                        echo "<h1>".$data->getTitle()."</h1>";
                     }
                     ?>
                 <div class="details">
-                    <div class="item">LOCALIZATION</div>
-                    <div class="item">LOCALIZATION</div>
-                    <div class="item">LOCALIZATION</div>
+                    <?php 
+                        echo '<div class="item">Localization: '.$data->getLocalization().'</div>';
+                        echo '<div class="item">'.$data->getAdvertiser().'</div>';
+                        echo '<div class="item">Experience: '.$data->getExperience().'y</div>';
+                        echo '<div class="item">Announcer: '.$data->getAdvertiser().'</div>';
+                        echo '<div class="item">Added: '.$data->getAdded().'</div>';
+                    ?>
                 </div>
                 
                 <div class="description">
                     <h1>DESCRIPTION</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam vitae neque obcaecati. Dolore ipsam itaque alias necessitatibus mollitia possimus ut nostrum quod porro quaerat? Explicabo rerum sunt quos minima excepturi. Facere, recusandae? Tempora totam, magni error ratione, incidunt velit eum, aspernatur rem aut sapiente possimus aliquam dolorum facilis repellat asperiores!
-                    </p>
+                    <?php
+                        echo '<p>'.$data->getDescription().'</p>';
+                    ?>
                 </div>
             </div>
             

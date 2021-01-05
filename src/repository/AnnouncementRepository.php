@@ -23,16 +23,38 @@ class AnnouncementRepository extends Repository
 
     }
 
-    public function getAnnouncementById(int $id)
+    public function getAnnouncementById(int $id) : Announcement
     {
+        /*
         $statement = $this->database->connect()->prepare(
-          "SELECT * FROM public.announcements WHERE id = :id"
+          "SELECT * FROM public.announcements WHERE id = :id
+          LEFT JOIN public.users ON id_advertiser ="
         );
+        */
+        $statement = $this->database->connect()->prepare(
+            "SELECT announcements.title, announcements.description,
+            announcements.experience, announcements.localization,
+            announcements.added, users.email 
+            FROM public.announcements
+                LEFT JOIN public.users
+                    ON id_advertiser = users.id
+                        WHERE announcements.id = :id"
+        );
+
 
         $statement->bindParam(":id", $id, PDO::PARAM_INT);
         $statement->execute();
-
-        return $statement->fetch(PDO::FETCH_ASSOC);
+        
+        $item = $statement->fetch(PDO::FETCH_ASSOC);
+        
+        return new Announcement(
+            $item['title'],
+            $item['description'],
+            $item['localization'],
+            intval($item['experience']),
+            $item['added'],
+            null,
+            $item['email']);
     }
 
     public function addAnnouncement(Announcement $announcement): void

@@ -4,13 +4,14 @@ require_once __DIR__.'/../models/User.php';
 
 class Announcement
 {
-
+    private $id;
     private $advertiser;
     private $title;
     private $description;
     private $localization;
     private $experience;
     private $appliers;
+    private $added;
 
     /*
     public function __construct(
@@ -33,13 +34,53 @@ class Announcement
         string $title,
         string $description,
         string $localization,
-        int $experience
+        int $experience,
+        string $added,
+        int $id = null,
+        string $advertiser = null
     )
     {
         $this->title = $title;
         $this->description = $description;
         $this->localization = $localization;
         $this->experience = $experience;
+        $this->added = $added;
+        if($id != null)
+            $this->id = $id;
+        if($advertiser != null)
+            $this->advertiser = $advertiser;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdded(): string
+    {
+        return $this->added;
+    }
+
+    /**
+     * @param string $added
+     */
+    public function setAdded(string $added): void
+    {
+        $this->added = $added;
     }
 
     public function getUser(): User{
