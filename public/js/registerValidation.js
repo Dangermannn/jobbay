@@ -15,23 +15,24 @@ function isEmail(email) {
 }
 
 function validatePasswordLength(password){
-    return password.length >= 8;
+    return password.length >= 8 || password.value != null;
 }
 
 function arePasswordsSame(password, confirmPassword){
-    return password === confirmPassword;
+    console.log(password + "      " + confirmPassword);
+    return confirmPassword != "" && password === confirmPassword;
 }
 
 function validateCity(city){
-    return city.length >= 4;
+    return city.length >= 4 || city.value != null;
 }
 
 function validateProfileName(profileName){
-    return profileName.length > 5;
+    return profileName.length > 5 || profileName.value != null;
 }
 
 function validateDescription(description){
-    return description.length >= 40;
+    return description.length >= 40 || description.value != null;
 }
 
 function markValidation(element, condition){
@@ -52,47 +53,37 @@ function isAllCorrect(){
     signUpButton.disabled = false;
 }
 
-cityInput.addEventListener('keyup', () => {
-    setTimeout(() => {
-        markValidation(cityInput, validateCity(cityInput.value))
-    }, 1000);
+cityInput.addEventListener('blur', () => {
+    markValidation(cityInput, validateCity(cityInput.value));
     isAllCorrect();
 });
 
-description[0].addEventListener('keyup', () => {
-    setTimeout(() => {
-        markValidation(description[0], validateDescription(description[0].value))
-    }, 1000);
+description[0].addEventListener('blur', () => {
+    markValidation(description[0], validateDescription(description[0].value));
     isAllCorrect();
 });
 
-emailInput.addEventListener('keyup', () => {
-    setTimeout(() => {
-        markValidation(emailInput, isEmail(emailInput.value))
-    }, 1000);
+emailInput.addEventListener('blur', () => {
+    markValidation(emailInput, isEmail(emailInput.value))
     isAllCorrect();
 });
 
-confirmedPasswordInput.addEventListener('keyup', () => {
-    setTimeout(() => {
-        const condition = arePasswordsSame(
-           password.value, confirmedPasswordInput.value
-        );
-        markValidation(confirmedPasswordInput, condition)
-    }, 1000);
+confirmedPasswordInput.addEventListener('blur', () => {
+    const condition = arePasswordsSame(
+        password.value, confirmedPasswordInput.value
+    );
+    console.log("COND: " + condition);
+    markValidation(confirmedPasswordInput, condition)
+
 });
 
-profileName.addEventListener('keyup', () => {
-    setTimeout(() => {
-        markValidation(profileName, validateProfileName(profileName.value))
-    }, 1000);
+profileName.addEventListener('blur', () => {
+    markValidation(profileName, validateProfileName(profileName.value));
     isAllCorrect();
 });
 
-password.addEventListener('keyup', () => {
-    setTimeout(() => {
-        markValidation(password, validatePasswordLength(password.value))
-    }, 1000);
+password.addEventListener('blur', () => {
+    markValidation(password, validatePasswordLength(password.value));
     isAllCorrect();
 });
 
