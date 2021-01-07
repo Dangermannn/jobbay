@@ -31,5 +31,7 @@
             </form>
         </div>
     </div>
+
+    <script src="public/js/loginValidation.js"></script>
 </body>
 </html>

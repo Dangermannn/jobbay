@@ -36,6 +36,11 @@ html{
     background-color: #F50000EA;
 }
 
+.no-valid{
+    border: 3px solid !important;
+    background-color: pink !important;
+}
+
 .row{
     width: 80%;
     display: flex;
