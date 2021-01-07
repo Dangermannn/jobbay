@@ -12,6 +12,14 @@ html{
     align-items: center;
 }
 
+body{
+    width: 100%;
+}
+
+.container{
+    margin-top: 12vh;
+}
+
 .button-link{
     border: 2px solid   #F50000EA;
     border-radius: 4px;
@@ -21,15 +29,19 @@ html{
     color: white;
     margin: 15px 15px;
     font-weight: 500;
-    letter-spacing: .3rem;
+    letter-spacing: .3em;
     transition: 0.4s ease background-color;
+}
+
+.main-content{
+    margin-top: 2vh;
 }
 
 .button-link a{
     text-decoration: none;
     font-size: 10px;
     font-weight: 500;
-    letter-spacing: .3rem;
+    letter-spacing: .3em;
 }
 
 .button-link:hover{
@@ -55,8 +67,9 @@ html{
 }
 
 .row-item img{
-    height: 30vh;
-    width: 30vw;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
 }
 
 .container{
@@ -68,6 +81,10 @@ html{
 }
 
 /* Navbar */
+
+.active-nav{
+    height: 100vh !important;
+}
 
 .nav {
     position: fixed;
@@ -97,19 +114,41 @@ html{
     min-height: 70px;
 }
 
+.nav .nav-list{
+    width: 100%;
+}
+.nav .nav-list ul{
+    width: 100%;
+}
+
+.nav .nav-list ul li form{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 5vh;
+}
 .nav .nav-list .search-bar{
     display: flex;
     flex-direction: row;
     float: left;
+    margin: 0;
+    width: 100%;
+    align-items: center;
+    margin: 0 70px;
 }
+
 
 .nav .nav-list .search-bar input{
     padding: 5px;
+    width: 85%;
+    border: none;
 }
 
 .nav .nav-bar .nav-list .search-bar button{
     background-color: #F50000EA;
     padding: 5px;
+    width: 15%;
+    border: none;
 }
 
 .nav .nav-bar .nav-list ul{
@@ -117,8 +156,10 @@ html{
     display: flex;
     flex-direction: row;
     list-style-type: none;
-    width: 30%;
+    width: 80%;
     float: right;
+    max-height: 12vh;
+
 }
 
 .nav .nav-bar .nav-list ul li{
@@ -374,7 +415,6 @@ html{
     height: 100vh;
     width: 100vw;
     max-width: 100%;
-    overflow-y: auto;
 }
 
 .header-home::after{
@@ -412,14 +452,18 @@ html{
 
     /* Navbar Section*/
 
+    .nav .nav-bar{
+        height: 12vh;
+    }
+
     .nav .nav-bar .nav-list .hamburger{
         height: 60px;
         width: 60px;
         border: 3d solid white;
         border-radius: 50%;
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 1vh;
+        right: 2vw;
         z-index: 100;
         cursor: pointer;
         transform: scale(0.8);
@@ -441,6 +485,8 @@ html{
         position: relative;
         background-color: white;
         z-index: 101;
+        left: 18px !important;
+        top: 32px !important;
     }
 
     .nav .nav-bar .nav-list .hamburger .bar::after,
@@ -477,7 +523,7 @@ html{
         background-color: rgb(31, 30, 30);
         text-decoration: none;
         width: 100vw;
-        height: 100vh;
+        height: 100vh !important;
         left: 100%;
         top: 0;
         display:flex;
@@ -487,6 +533,7 @@ html{
         z-index: 1;
         overflow: hidden;
         transition: 0.3s ease left;
+        max-height: 100vh !important;
     }
 
     .nav .nav-bar .nav-list ul{
@@ -522,6 +569,7 @@ html{
         padding: 20px;
         display: block;
     }
+
     .nav .nav-bar .nav-list ul a::after {
         content: attr(data-after);
         position: absolute;
@@ -548,7 +596,14 @@ html{
 
     /* Footer section */
 
+    .footer .icons{
+        margin-right: auto;
+        margin-left: auto;
+    }
+
     .footer{
+        position: absolute;
+        bottom: 0;
         display: flex;
         flex-direction: column;
         vertical-align: middle;
@@ -581,7 +636,8 @@ html{
     }
 
     .container .title p{
-        font-size: 4rem;
+        margin-top: 20px;
+        font-size: 2.2em;
         color: white;
         text-align: center;
     }
@@ -601,4 +657,10 @@ html{
     }
 
     /* End Register page */
+}
+
+@media only screen and (max-width: 400px){
+    table{
+        left: 10%;
+    }
 }

@@ -11,3 +11,12 @@
     border: 3px solid !important;
     background-color: pink !important;
 }
+
+
+textarea{
+    min-width: 200px;
+}
+
+.container{
+    margin-top: 0;
+}

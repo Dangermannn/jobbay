@@ -1,7 +1,19 @@
-.nav .nav-bar .nav-list ul li.search-bar{
-    position: absolute;
-    align-items: center;
-    vertical-align: middle;
-    background-color: blue;
-    padding: 100px;
+@media only screen and (max-width: 1200px){
+    h1{
+        font-size: 7em !important; 
+    }
+
+    footer {
+        position: relative !important;
+        bottom: 0;
+    }
+
+    .row-item{
+        margin: 40px;
+    }
+
+    .title{
+        font-size: 3em !important;
+    }
+
 }

@@ -25,7 +25,7 @@
                 <h2>Profile name</h2>
                 <input name="profile-name" type="text" placeholder="profile name">
                 <h2>Profile description</h2>
-                <textarea name="profile-description" id="" cols="30" rows="10" placeholder="Description (min. 40 signs)"></textarea>
+                <textarea name="profile-description" id="" cols="30" rows="10" placeholder="Description (min. 40 characters)"></textarea>
                 <button type="submit" name="sign-up" disabled>Sign up</button>
             </form>
             <button name="login" onclick="routeToLogin()">Login</button>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/home.css">
     <title>Document</title>
 </head>
 <body>
@@ -18,10 +19,10 @@
 
                 <ul>
                     <li class="search-bar">
-                        <div>
-                            <input name="search" type="text" placeholder="Search...">
-                            <button><img src="public/img/search.svg" alt=""></button>
-                        </div>
+                        <form action="jobListening" method="POST">
+                            <input name="keyword" type="text" placeholder="Search...">
+                            <button type="submit"><img src="public/img/search.svg" alt=""></button>
+                        </form>
                     </li>
                     <li>
                         <a href="home"><img src="public/img/home.svg" alt="">Home</a>

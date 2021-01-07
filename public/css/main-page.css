@@ -2,8 +2,13 @@ body{
     width: 100vw;
 }
 
+.container{
+    margin-top: 0;
+}
+
 .header{
     height: 100vh;
+    max-height: 100vh;;
 }
 
 a{
@@ -14,8 +19,36 @@ a{
 .row {
     margin-top: 40px;
     margin-bottom: 40px;
+    vertical-align: middle !important;
 }
 
 .info{
     margin: 30px 0;
+}
+
+.row-item{
+    margin: 20px 40px;
+}
+
+
+.row-item .btn .register{
+    width: 160px;
+}
+
+@media only screen and (max-width: 1200px){
+    .row{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .row .row-item img{
+        height: 60%;
+    }
+
+    .header .row .row-item{
+        margin: 20px 40px;
+    }
+    .header .row .logo{
+        left: 0;
+    }
 }
