@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/main-page.css">
     <title>Welcome</title>
 </head>
 <body>
@@ -21,7 +22,7 @@
         <div class="row">
             <div class="row-item" style="align-items: flex-end;">
                 <div class="btn">
-                    <a class="registerrr" href="login.html">Register</a>
+                    <a class="register" href="login">Register</a>
                 </div>
             </div>
         </div>
