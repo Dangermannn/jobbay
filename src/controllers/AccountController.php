@@ -38,6 +38,7 @@ class AccountController extends AppController{
         $this->render('user-info', ['data' => $user]);
     }
 
+
     public function updateAccount(){
         $userRepository = new UserRepository();
 
@@ -62,7 +63,26 @@ class AccountController extends AppController{
         return $this->render('account-details', ['messages' => $this->messages]);
     }
 
-    public function isFileValid(array $file) : bool{
+    public function getCv()
+    {
+        $contentType =  isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+        if($contentType === "application/json"){
+            $email = trim(file_get_contents("php://input"));
+            $decodedEmail = json_decode($email, false);
+            print_r($decodedEmail);
+            $userRepository = new UserRepository();
+            $user = $userRepository->getUser($decodedEmail['email']);
+            if($user->getCv() == null)
+                return;
+            $pdf = file_get_content('public/uploads/'.$user.getCv());
+
+            header('Content-type: application/pdf');
+
+            echo $pdf;
+        }
+    }
+
+    private function isFileValid(array $file) : bool{
         if($file['size'] >= self::MAX_FILE_SIZE){
             $this->messages[] = 'File is too large for uploading.';
             return false;

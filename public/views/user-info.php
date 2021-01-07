@@ -16,7 +16,6 @@
 
             <div class="nav-list">
                 <div class="hamburger"><div class="bar"></div></div>
-
                 <ul>
                     <li class="search-bar">
                         <form action="jobListening" method="POST">
@@ -60,6 +59,10 @@
                         echo '<p>'.$data->getDescription().'</p>';
                     ?>
                 </div>
+
+                <div class="btn">
+                    <button name="show-cv">Show CV</button>
+                </div>
             </div>
             
         </div>
@@ -93,5 +96,6 @@
     </div>
 
     <script src="public/js/app.js"></script>
+    <script src="public/js/cvLoad.js"></script>
 </body>
 </html>

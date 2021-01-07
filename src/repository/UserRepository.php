@@ -22,7 +22,8 @@ class UserRepository extends Repository
           null,
           $user['name'],
           $user['description'],
-          $user['city']
+          $user['city'],
+          $user['cv_path']
         );
     }
 
@@ -44,6 +45,7 @@ class UserRepository extends Repository
           null,
           null,
           null,
+          null
         );
     }
 

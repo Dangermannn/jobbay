@@ -9,10 +9,11 @@ class User {
     private $city;
     public function __construct(
         string $email,
-        string $password = null,
-        string $name,
-        string $description,
-        string $city
+        ?string $password,
+        ?string $name,
+        ?string $description,
+        ?string $city,
+        ?string $cv
     ) {
         $this->email = $email;
         if($password != null)
@@ -20,6 +21,8 @@ class User {
         $this->name = $name;
         $this->description = $description;
         $this->city = $city;
+        if($cv != null)
+            $this->cv = $cv;
     }
 
     public function getCv()

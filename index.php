@@ -24,4 +24,6 @@ Routing::get('accountInfo', 'AccountController');
 
 Routing::post('updateAccount', 'AccountController');
 
+Routing::get('getCv', 'AccountController');
+
 Routing::run($path);    
