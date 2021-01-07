@@ -12,6 +12,30 @@ html{
     align-items: center;
 }
 
+.button-link{
+    border: 2px solid   #F50000EA;
+    border-radius: 4px;
+    width: 160px;
+    height: 40px;
+    background: transparent;
+    color: white;
+    margin: 15px 15px;
+    font-weight: 500;
+    letter-spacing: .3rem;
+    transition: 0.4s ease background-color;
+}
+
+.button-link a{
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .3rem;
+}
+
+.button-link:hover{
+    background-color: #F50000EA;
+}
+
 .row{
     width: 80%;
     display: flex;
@@ -188,6 +212,14 @@ html{
     text-align: center;
 }
 
+.container .login-form{
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+}
+
 .container .login-form form{
     display: flex;
     flex-direction: column; 
@@ -203,25 +235,30 @@ html{
     left: 0;
 }
 
-.container .login-form form .buttons{
+.container .login-form{
     flex-direction: row;
 }
 
-.container .login-form form .buttons button{
+.container .login-form button{
     border: 2px solid   #F50000EA;
     border-radius: 4px;
     width: 160px;
     height: 40px;
     background: transparent;
     color: white;
-    margin: 0 15px;
+    margin: 15px 15px;
     font-weight: 500;
     letter-spacing: .3rem;
     transition: 0.4s ease background-color;
 }
 
-.container .login-form form .buttons button:hover{
+.container .login-form button:hover{
     background-color: #F50000EA;
+}
+
+.container .login-form button:disabled{
+    background: #707070 !important;
+    color: white !important;
 }
 
 .container .login-form form input{

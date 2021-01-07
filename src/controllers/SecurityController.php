@@ -46,6 +46,7 @@ class SecurityController extends AppController
     }
 
     public function registerUser(){
+
         $userRepository = new UserRepository();
         
         $email = $_POST["email"];
