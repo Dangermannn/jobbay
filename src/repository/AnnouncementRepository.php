@@ -28,8 +28,7 @@ class AnnouncementRepository extends Repository
                 $announcement['localization'],
                 intval($announcement['experience']),
                 $announcement['added'],
-                intval($announcement['id']),
-                
+                intval($announcement['id'])
             );
         }
         return $return;
@@ -37,14 +36,8 @@ class AnnouncementRepository extends Repository
 
     public function getAnnouncementById(int $id) : Announcement
     {
-        /*
         $statement = $this->database->connect()->prepare(
-          "SELECT * FROM public.announcements WHERE id = :id
-          LEFT JOIN public.users ON id_advertiser ="
-        );
-        */
-        $statement = $this->database->connect()->prepare(
-            "SELECT announcements.title, announcements.description,
+            "SELECT announcements.id, announcements.title, announcements.description,
             announcements.experience, announcements.localization,
             announcements.added, users.email 
             FROM public.announcements
@@ -65,7 +58,7 @@ class AnnouncementRepository extends Repository
             $item['localization'],
             intval($item['experience']),
             $item['added'],
-            null,
+            intval($item['id']),
             $item['email']);
     }
 
@@ -87,5 +80,16 @@ class AnnouncementRepository extends Repository
             $announcement->getExperience(),
             $date->format('Y-m-d')
         ]);
+    }
+
+    public function addApplier(int $id_user, int $id_ad)
+    {
+        $statement = $this->database->connect()->prepare(
+            'INSERT INTO public.announcements_users
+            (id_user, id_announcement) VALUES (?, ?)
+            '
+        );
+
+        $statement->execute([$id_user, $id_ad]);
     }
 }

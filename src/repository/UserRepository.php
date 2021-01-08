@@ -48,7 +48,8 @@ class UserRepository extends Repository
           null,
           null,
           null,
-          null
+          null,
+          $user['id']
         );
     }
 

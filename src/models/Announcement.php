@@ -37,7 +37,7 @@ class Announcement
         int $experience,
         string $added,
         int $id = null,
-        string $advertiser = null
+        ?string $advertiser = null  
     )
     {
         $this->title = $title;

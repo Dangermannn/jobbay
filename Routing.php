@@ -17,13 +17,19 @@ class Routing{
     }
 
     public static function run($url){
-        $action = explode("/", $url)[0];
+        $urlParts = explode("/", $url);
+        $action = $urlParts[0];
+
         if(!array_key_exists($action, self::$routes))
             die("Wrong url!");
 
         $controller = self::$routes[$action];
         $object = new $controller;
-        
-        $object->$action();
+
+        $id = $urlParts[1] ?? '';
+        if(is_int($id))
+            $object->$action($id); 
+        else
+            $object->$action($id);
     }
 }

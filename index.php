@@ -25,5 +25,8 @@ Routing::get('accountInfo', 'AccountController');
 Routing::post('updateAccount', 'AccountController');
 
 Routing::get('getCv', 'AccountController');
+Routing::get('addUserAsApplier', 'AnnouncementsController');
+
+Routing::get('logout', 'SecurityController');
 
 Routing::run($path);    

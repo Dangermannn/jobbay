@@ -22,15 +22,15 @@
                     }
                     ?>
                     <hr>
-                <div class="details">
                     <?php 
+                        echo '<div id="'.$data->getId().'" class="details">';
                         echo '<div class="item"><span>Username:</span> '.$data->getLocalization().'</div>';
                         echo '<div class="item"><span>Email:</span> <a href="/accountInfo?email='.$data->getAdvertiser().'">'.$data->getAdvertiser().'</a></div>';
                         echo '<div class="item"><span>Experience:</span> '.$data->getExperience().'y</div>';
                         echo '<div class="item"><span>Announcer:</span> '.$data->getAdvertiser().'</div>';
                         echo '<div class="item"><span>Added:</span> '.$data->getAdded().'</div>';
+                        echo '</div>'
                     ?>
-                </div>
                 
                 <hr>
                 
@@ -43,12 +43,13 @@
                 </div>
             </div>
             
-            <button>Apply</button>
+            <button id="apply">Apply</button>
         </div>
     </div>
 
     <?php include('public/templates/footer.php'); ?>
 
     <script src="public/js/app.js"></script>
+    <script src="public/js/applyJob.js"></script>
 </body>
 </html>

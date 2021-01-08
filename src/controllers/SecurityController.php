@@ -40,6 +40,7 @@ class SecurityController extends AppController
         session_start();
         $_SESSION["loggedIn"] = true;
         $_SESSION["email"] = $email;
+        $_SESSION["id"] = $user->getId();
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");
@@ -69,6 +70,8 @@ class SecurityController extends AppController
         session_start();
         unset($_SESSION["loggedIn"]);
         unset($_SESSION["email"]);
+        unset($_SESSION["id"]);
+        session_destroy();
         $this->render('login', ['messages' => ['You have been logout successfully!']]);
     }
 }

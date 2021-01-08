@@ -65,7 +65,7 @@ class AccountController extends AppController{
 
     public function getCv()
     {
-        $contentType =  isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
         if($contentType === "application/json"){
             $email = trim(file_get_contents("php://input"));
             $decodedEmail = json_decode($email, false);

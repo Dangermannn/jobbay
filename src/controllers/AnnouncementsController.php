@@ -60,4 +60,12 @@ class AnnouncementsController extends AppController
         $announcement = new Announcement($_POST['user'], $_POST['title'], $_POST['description'], $_POST['localization'], $_POST['experience']);
         $this->projectRepository->addAnnouncement($announcement);
     }
+
+    public function addUserAsApplier($id_announcement)
+    {
+        session_start();
+        $repo = new AnnouncementRepository();
+        //throw new Exception("Message: ".$_SESSION['id']."   ".$_SESSION['email']."     ".$_SESSION['loggedIn']);
+        $repo->addApplier($_SESSION['id'], $id_announcement);
+    }
 }

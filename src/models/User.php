@@ -1,6 +1,7 @@
 <?php
 
 class User {
+    private $id;
     private $email;
     private $password;
     private $name;
@@ -13,7 +14,8 @@ class User {
         ?string $name,
         ?string $description,
         ?string $city,
-        ?string $cv
+        ?string $cv,
+        ?string $id
     ) {
         $this->email = $email;
         if($password != null)
@@ -23,6 +25,17 @@ class User {
         $this->city = $city;
         if($cv != null)
             $this->cv = $cv;
+        if($id != null)
+            $this->id = $id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id){
+        $this->id = $id;
     }
 
     public function getCv()
