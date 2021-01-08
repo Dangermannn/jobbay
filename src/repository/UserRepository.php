@@ -26,7 +26,8 @@ class UserRepository extends Repository
           $user['name'],
           $user['description'],
           $user['city'],
-          $user['cv_path']
+          $user['cv_path'],
+          $user['id']
         );
     }
 

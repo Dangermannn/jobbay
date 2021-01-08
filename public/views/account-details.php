@@ -13,32 +13,83 @@
 
     <div class="container">
 
-        <div class="messages">
-            <?php
-                if(isset($messages)){
-                    foreach($messages as $message) {
-                        echo $message;
-                    }
-                }
-            ?>
-        </div>
 
         <section class="my-announcements">
             <h1>My announcements</h1>
-            <!-- ADD TABLE WITH MY ANNOUNCEMENTS -->
+            <table class="styled-table">
+                <thead>
+                    <th>Title</th>
+                    <th>Localization</th>
+                    <th>Experience</th>
+                    <th>Added</th>
+                    <th>Details</th>
+                    <th>Remove</th>
+                </thead>
+                <tbody>
+                    <?php
+                        if(isset($shared))
+                        {
+                            foreach($shared as $shared){
+                                echo '<tr id="'.$shared->getId().'">';
+                                echo '<td>'.$shared->getTitle().'</td>';
+                                echo '<td>'.$shared->getLocalization().'</td>';
+                                echo '<td>'.$shared->getExperience().'y</td>';
+                                echo '<td>'.$shared->getAdded().'</td>';
+                                echo '<td><a href="announcementDetails?id='.$shared->getId().'">link</a></td>';
+                                echo '<td><button name="remove" class="removeButton">Remove</button></td>';
+                                echo '</tr>';
+                            }
+                        }
+                        else
+                            echo '<tr><td colspan="6">You do not share any job offers</td></tr>'
+                    ?>
+                    
+                </tbody>
+            </table>
         </section>
 
         <section class="applied-jobs">
             <h1>Jobs I applied for</h1>
-            <!-- ADD TABLE WITH JOBS -->
+            <table class="styled-table">
+                <thead>
+                    <th>Title</th>
+                    <th>Localization</th>
+                    <th>Experience</th>
+                    <th>Added</th>
+                    <th>Details</th>
+                    <th>Remove</th>
+                </thead>
+                <tbody>
+                    <?php
+                        if(isset($applied))
+                        {
+                            foreach($applied as $applied){
+                                echo '<tr id="'.$applied->getId().'">';
+                                echo '<td>'.$applied->getTitle().'</td>';
+                                echo '<td>'.$applied->getLocalization().'</td>';
+                                echo '<td>'.$applied->getExperience().'y</td>';
+                                echo '<td>'.$applied->getAdded().'</td>';
+                                echo '<td><a href="announcementDetails?id='.$applied->getId().'">link</a></td>';
+                                echo '<td><button name="disapply" class="removeButton">Remove</button></td>';
+                                echo '</tr>';
+                            }
+                        }
+                        else
+                            echo '<tr><td colspan="6">You have not applied to any job</td></tr>'
+                    ?>
+                    
+                </tbody>
+            </table>
         </section>
 
-
-        <a class="link-button" href="">Change account details</a>
+        <div class="settings">
+            <a href="accountSettings">Settings</a>
+        </div>
     </div>
 
     <?php include('public/templates/footer.php'); ?>
 
     <script src="public/js/app.js"></script>
+    <script src="public/js/removeAdOrApply.js"></script>
 </body>
 </html>

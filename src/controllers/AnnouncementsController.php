@@ -61,6 +61,13 @@ class AnnouncementsController extends AppController
         $this->projectRepository->addAnnouncement($announcement);
     }
 
+    public function removeAnnouncement($id_announcement)
+    {
+        session_start();
+        $repo = new AnnouncementRepository();
+        $repo->removeAnnouncement($id_announcement);
+    }
+
     public function addUserAsApplier($id_announcement)
     {
         session_start();
@@ -68,4 +75,12 @@ class AnnouncementsController extends AppController
         //throw new Exception("Message: ".$_SESSION['id']."   ".$_SESSION['email']."     ".$_SESSION['loggedIn']);
         $repo->addApplier($_SESSION['id'], $id_announcement);
     }
+
+    public function removeApplier($id_announcement)
+    {
+        session_start();
+        $repo = new AnnouncementRepository();
+        $repo->removeApplier($_SESSION['id'], $id_announcement);
+    }
+
 }

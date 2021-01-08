@@ -13,35 +13,19 @@ class Announcement
     private $appliers;
     private $added;
 
-    /*
-    public function __construct(
-        User $advertiser,
-        string $title,
-        string $description,
-        string $localization,
-        int $experience,
-        array $appliers = []
-    ){
-        $this->advertiser = $advertiser;
-        $this->title = $title;
-        $this->description = $description;
-        $this->localization = $localization;
-        $this->experience = $experience;
-        $this->appliers = $appliers;
-    }
-*/
     public function __construct(
         string $title,
-        string $description,
+        ?string $description,
         string $localization,
         int $experience,
         string $added,
-        int $id = null,
+        ?int $id = null,
         ?string $advertiser = null  
     )
     {
         $this->title = $title;
-        $this->description = $description;
+        if($description != null)
+            $this->description = $description;
         $this->localization = $localization;
         $this->experience = $experience;
         $this->added = $added;

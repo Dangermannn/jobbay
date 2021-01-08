@@ -4,6 +4,7 @@ require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../models/Announcement.php';
 require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__.'/../repository/AnnouncementRepository.php';
 
 class AccountController extends AppController{
 
@@ -19,7 +20,12 @@ class AccountController extends AppController{
             echo("Access denied!");
             exit();
         }
-        $this->render('account-details');
+
+        $repo = new AnnouncementRepository();
+        $applied = $repo->getAnnouncementsUserAppliedFor($_SESSION['id']);
+        $shared = $repo->getAnnouncementsUserShared($_SESSION['id']);
+
+        $this->render('account-details', ['applied' => $applied, 'shared' => $shared]);
     }
 
     public function accountSettings(){

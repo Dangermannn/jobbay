@@ -20,33 +20,10 @@ body{
     margin-top: 12vh;
 }
 
-.button-link{
-    border: 2px solid   #F50000EA;
-    border-radius: 4px;
-    width: 160px;
-    height: 40px;
-    background: transparent;
-    color: white;
-    margin: 15px 15px;
-    font-weight: 500;
-    letter-spacing: .3em;
-    transition: 0.4s ease background-color;
-}
-
 .main-content{
     margin-top: 2vh;
 }
 
-.button-link a{
-    text-decoration: none;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: .3em;
-}
-
-.button-link:hover{
-    background-color: #F50000EA;
-}
 
 .no-valid{
     border: 3px solid !important;

@@ -1,14 +1,12 @@
-.nav {
-    position: relative;
-    overflow-x: hidden;
-}
+
 
 .container{
-    margin-top: 10em;
+    margin-top: 12vh;
     margin-bottom: 10em;
     width: 100%;
     display: flex;
     flex-direction: column;
+    
 }
 
 .footer{
@@ -18,6 +16,84 @@
     width: 100%;
     overflow-x: hidden;
 }
+
+table{
+    position: relative;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+table, th, td{
+    border-collapse: collapse;
+    font-size: 1.2em;
+    border: 1px solid black;
+}
+
+table td, table th{
+    padding: 15px;
+}
+
+table th{
+    text-align: left;
+    background: #FBF4EF 0% 0% no-repeat padding-box;
+}
+
+
+.my-announcements, .applied-jobs{
+    text-align: center;
+    width: 100%;
+}
+
+h1{
+    margin: 30px;
+}
+
+.removeButton{
+    border: 2px solid #F50000EA;
+    background-color: #EF233C;
+    width: 80px;
+    height: 40px;
+    color: white;
+    border-radius: 4px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    transition:  0.4s ease background-color;
+}
+
+.removeButton:hover{
+    background-color: #B71125;
+    border: 0px dotted #FF7384;
+}
+
+.settings{
+    margin: 50px 0;
+}
+
+.settings-button{
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+}
+
+.settings a:link, .settings a:visited {
+    background-color: #f44336;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+  
+.settings a:hover, .settings a:active {
+    background-color: red;
+}
+
 
 @media only screen and (max-width: 1200px){
     .nav{
