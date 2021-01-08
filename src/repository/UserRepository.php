@@ -7,7 +7,11 @@ class UserRepository extends Repository
 {
     public function getUser(string $email) : ?User {
         $statement = $this->database->connect()->prepare('
-            SELECT * FROM public.users WHERE email = :email
+            SELECT public.users.email, public.user_details.description
+                FROM users
+                     LEFT JOIN public.user_details
+                        ON public.users.id_user_details = public.user_details.id
+                WHERE public.users.email = :email
         ');
         $statement->bindParam(':email', $email, PDO::PARAM_STR);
         $statement->execute();
@@ -51,32 +55,50 @@ class UserRepository extends Repository
 
     public function registerUser(string $email, string $name, string $city, string $password, string $description)
     {
-        $statement = $this->database->connect()->prepare('
-            INSERT INTO public.users (email,  name, city, password_hash, description)
-            VALUES (?, ?, ?, ?, ?)
-        ');
+            $this->database->connect()->beginTransaction();
 
-        $statement->execute([
-            $email,
-            $name,
-            $city,
-            password_hash($password, PASSWORD_DEFAULT),
-            $description
-        ]);
+            $statement = $this->database->connect()->prepare('
+                INSERT INTO public.user_details (name, city, description)
+                VALUES (?, ?, ?) RETURNING id
+                '
+            );
+
+            $statement->execute([
+               $name, $city, $description
+            ]);
+
+            $id = $statement->fetch(PDO::PARAM_STR);
+
+
+            $statement = $this->database->connect()->prepare(
+                '
+                INSERT INTO public.users (email, password_hash, id_user_details)
+                VALUES (?, ?, ?)
+                '
+            );
+            
+            $statement->execute([$email, password_hash($password, PASSWORD_BCRYPT), $id['id']]);
     }
 
     public function updateUser(string $password, string $city, string $description, string $cv_path)
     {
-        //if($password == null && $city == null && $description == null && $cv_path == null)
-        //    return;
         if(!isset($_SESSION))
             session_start();
-        $st = "UPDATE public.users SET ";
+
+        $stUsers = "UPDATE public.users SET ";
+
+
         if($password != null)
         {
             if(strlen($password) < 8)
                 return;
             $st."password='".$password."'";
+
+            $statement = $this->database->connect()->prepare(
+                $stUsers." WHERE email='".$email."'"
+            );
+    
+            $statement->execute();
         }
 
         if($city != null)
