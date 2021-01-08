@@ -22,10 +22,10 @@
                     <a href="messages"><img src="public/img/message.svg" alt="">Messages</a>
                 </li>
                 <li>                        
-                    <a href="accountSettings"><img src="public/img/account.svg" alt="">Account</a>
+                    <a href="accountDetails"><img src="public/img/account.svg" alt="">Account</a>
                 </li>
                 <li>                        
-                    <a href="src/controllers/helpers/ClearSession.php"><img src="public/img/logout.svg" alt="">Logout</a>
+                    <a href="logout"><img src="public/img/logout.svg" alt="">Logout</a>
                 </li>
             </ul>
         </div>
