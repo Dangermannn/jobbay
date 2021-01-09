@@ -23,19 +23,36 @@
                 }
             ?>
         </div>
-
+        
         <!-- Change account details -->
         <form action="updateAccount" method="POST" ENCTYPE="multipart/form-data">
-            <h2>Password</h2>
-            <input name="password" type="password" placeholder="password">
-            <h2>Confirm password</h2>
-            <input name="confirm-password" type="password" placeholder="password">
-            <h2>City</h2>
-            <input name="city" type="text" placeholder="city">
-            <h2>Profile description</h2>
-            <textarea name="profile-description" id="" cols="30" rows="10"></textarea>
-            <input type="file" name="file">
-            <button type="submit">Save</button>
+            <div class="inputs">
+                <span>
+                    <h2>Password</h2>   
+                    <input name="password" type="password" placeholder="password">
+                </span>
+                <span>
+                    <h2>Confirm password</h2>
+                    <input name="confirm-password" type="password" placeholder="password">
+                </span>
+                <span>
+                    <h2>City</h2>
+                    <input name="city" type="text" placeholder="city">
+                </span>
+                <span id="upload-cvvv">
+                    <h2>Upload CV</h2>
+                    <input id="upload-cv" type="file" name="file">
+                </span>
+            </div>
+
+            <span class="description">
+                <h2>Profile description</h2>
+                <textarea name="profile-description" id="" maxlength="300" cols="30" rows="10"></textarea>
+            </span>
+                
+            <div class="button">
+                <button class="red-button" type="submit">Save</button>
+            </div>
         </form>
 
     </div>

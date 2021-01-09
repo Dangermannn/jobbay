@@ -1,7 +1,7 @@
 <?php
     echo '
     <div class="nav">
-    <div class="nav-bar container">
+    <div class="nav-bar">
         <div class="logo">
             <img src="public/img/logo.svg" alt="">
         </div>

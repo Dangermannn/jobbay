@@ -13,11 +13,34 @@ html{
 }
 
 body{
-    width: 100%;
+    width: 100vw;
+}
+
+textarea{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 3px solid #F50000EA;
+    border-radius: 4px;
+    width: 30%;
+}
+
+.container input{
+    background: #F1F9FF 0% 0% no-repeat padding-box;
+    border: 2px solid #F50000EA;
+    border-radius: 10px;
+    min-width: 200px;
+    padding: 20px;
+    margin: 0 0 30px 0;
+    height: 50px;
+    width: 30%;
 }
 
 .container{
     margin-top: 12vh;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-content{
@@ -47,14 +70,6 @@ body{
     height: auto;
     width: 100%;
     overflow: hidden;
-}
-
-.container{
-    width: calc(100% - 1px);
-    height: calc(100% - 1px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 /* Navbar */
@@ -262,7 +277,7 @@ body{
     flex-direction: row;
 }
 
-.container .login-form button{
+.transparent-button{
     border: 2px solid   #F50000EA;
     border-radius: 4px;
     width: 160px;
@@ -275,25 +290,39 @@ body{
     transition: 0.4s ease background-color;
 }
 
-.container .login-form button:hover{
+.transparent-button:hover{
     background-color: #F50000EA;
 }
 
-.container .login-form button:disabled{
+.transparent-button:disabled{
     background: #707070 !important;
     color: white !important;
 }
 
-.container .login-form form input{
-    background: #F1F9FF 0% 0% no-repeat padding-box;
-    border: 2px solid #F50000EA;
-    border-radius: 10px;
-    min-width: 200px;
-    padding: 20px;
-    margin: 0 0 30px 0;
-    height: 50px;
-    width: 30%;
+.red-button{
+    border: 2px solid   #F50000EA;
+    border-radius: 4px;
+    width: 160px;
+    height: 40px;
+    background: red;
+    color: white;
+    margin: 15px 15px;
+    font-weight: 500;
+    letter-spacing: .3rem;
+    transition: 0.4s ease background-color;
 }
+
+.red-button:hover{
+    background-color: white;
+    color: red;
+}
+
+.red-button:disabled{
+    background: #707070 !important;
+    color: white !important;
+}
+
+
 
 /* Main page section */
 
@@ -363,13 +392,6 @@ body{
 
 .container{
     height: 100%;
-}
-
-.container .login-form textarea{
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 3px solid #F50000EA;
-    border-radius: 4px;
-    width: 30%;
 }
 
 .container .login-form .buttons{
@@ -641,3 +663,4 @@ body{
         left: 10%;
     }
 }
+
