@@ -34,6 +34,16 @@ class AnnouncementsController extends AppController
         $this->render('announcement-details', ['data' => $announcement]); // announcement-details
     }
 
+    public function announcementForm()
+    {
+        session_start();
+        if($_SESSION["loggedIn"] != true) {
+            echo("Access denied!");
+            exit();
+        }
+        $this->render('announcement-form');
+    }
+
     public function getAnnouncement(string $username): ?array
     {
         $user = new User('test@abcdef', 'password', 'name');
@@ -57,8 +67,15 @@ class AnnouncementsController extends AppController
 
     public function addAnnouncement(): void
     {
-        $announcement = new Announcement($_POST['user'], $_POST['title'], $_POST['description'], $_POST['localization'], $_POST['experience']);
-        $this->projectRepository->addAnnouncement($announcement);
+        $repo = new AnnouncementRepository();
+        session_start();
+        $announcement = new Announcement($_POST['title'],
+             $_POST['announcement-description'], $_POST['localization'],
+              intval($_POST['experience']), date("Y-m-d"), null, $_SESSION['id']);
+
+        $repo->addAnnouncement($announcement);
+
+        header("Location: {$url}/accountDetails");
     }
 
     public function removeAnnouncement($id_announcement)
@@ -72,7 +89,6 @@ class AnnouncementsController extends AppController
     {
         session_start();
         $repo = new AnnouncementRepository();
-        //throw new Exception("Message: ".$_SESSION['id']."   ".$_SESSION['email']."     ".$_SESSION['loggedIn']);
         $repo->addApplier($_SESSION['id'], $id_announcement);
     }
 

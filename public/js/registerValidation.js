@@ -39,9 +39,7 @@ confirmedPasswordInput.addEventListener('blur', () => {
     const condition = arePasswordsSame(
         password.value, confirmedPasswordInput.value
     );
-    console.log("COND: " + condition);
     markValidation(confirmedPasswordInput, condition)
-
 });
 
 profileName.addEventListener('blur', () => {
@@ -65,3 +63,4 @@ function markValidation(element, condition){
     }else
         element.classList.remove('no-valid');
 }
+

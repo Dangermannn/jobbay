@@ -28,8 +28,6 @@ menuItem.forEach(element => {
 	  });
 });
 
-
-
 function isEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
 }
@@ -39,7 +37,6 @@ function validatePasswordLength(password){
 }
 
 function arePasswordsSame(password, confirmPassword){
-    console.log(password + "      " + confirmPassword);
     return confirmPassword != "" && password === confirmPassword;
 }
 
@@ -55,6 +52,16 @@ function validateDescription(description){
     return description.length >= 40 || description.value != null;
 }
 
+function validateTitle(title){
+	return title.length > 4;
+}
+
+function validateExperience(experience){
+	return !isNaN(experience) && 
+        	parseInt(Number(experience)) == experience && 
+        	!isNaN(parseInt(experience, 10));
+}
+
 function markValidation(element, condition){
     if(!condition){
         element.classList.add('no-valid');
@@ -65,4 +72,8 @@ function markValidation(element, condition){
 function checkIfFieldIsEmpty(value){
 	let temp = value.trim();
 	return temp.length == 0 ? true : false;
+}
+
+function routeToAddingAnnouncement(){
+	window.location.href = window.location.href.substr(0, window.location.href.lastIndexOf('/')) + "/announcementForm";
 }

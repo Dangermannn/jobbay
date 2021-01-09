@@ -12,6 +12,9 @@
     <?php include('public/templates/navbar.php'); ?>
 
     <div class="container">
+        <div class="button">
+            <button class="violet-button" onclick="routeToAddingAnnouncement()">Add announcement</button>
+        </div>
         <section class="my-announcements">
             <h1>My announcements</h1>
             <table class="styled-table">

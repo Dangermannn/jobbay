@@ -129,21 +129,19 @@ class AnnouncementRepository extends Repository
 
     public function addAnnouncement(Announcement $announcement): void
     {
-        $date = new DateTime();
         $statement = $this->database->connect()->prepare(
             "INSERT INTO public.announcements 
                         (id_advertiser, description, title, localization, experience, added)
                         VALUES (?, ?, ?, ?, ?, ?)"
         );
-        $assignedById = 1;
 
         $statement->execute([
-            $assignedById,
+            $announcement->getAdvertiser(),
             $announcement->getDescription(),
             $announcement->getTitle(),
             $announcement->getLocalization(),
             $announcement->getExperience(),
-            $date->format('Y-m-d')
+            $announcement->getAdded()
         ]);
     }
 

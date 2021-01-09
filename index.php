@@ -17,7 +17,9 @@ Routing::get('home', 'DefaultController');
 
 Routing::get('jobListening', 'AnnouncementsController');
 Routing::get('announcementDetails', 'AnnouncementsController');
+Routing::get('announcementForm', 'AnnouncementsController');
 Routing::get('removeAnnouncement', 'AnnouncementsController');
+Routing::post('addAnnouncement', 'AnnouncementsController');
 
 Routing::get('accountSettings', 'AccountController');
 Routing::get('accountDetails', 'AccountController');
@@ -28,7 +30,6 @@ Routing::post('updateAccount', 'AccountController');
 Routing::get('getCv', 'AccountController');
 Routing::get('addUserAsApplier', 'AnnouncementsController');
 Routing::get('removeApplier', 'AnnouncementsController');
-
 Routing::get('logout', 'SecurityController');
 
 Routing::run($path);    
