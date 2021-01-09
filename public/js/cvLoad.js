@@ -20,8 +20,6 @@ showCvButton.addEventListener('click', (event) => {
         return new Blob([response.blob], { type: 'application/pdf'});
     }).then(function(data){
             try{
-                loadCv(data);
-                console.log('after reading data');
                 const url = window.URL.createObjectURL(data);
                 const a = document.createElement('a');
                 a.style.display = 'none';
@@ -39,8 +37,3 @@ showCvButton.addEventListener('click', (event) => {
             alert('Unknown error occured!');
         });
 });
-
-function loadCv(data){
-    console.log("DATA:")
-    console.log("T: " + data); 
-}

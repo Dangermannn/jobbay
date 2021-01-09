@@ -27,3 +27,42 @@ menuItem.forEach(element => {
 		mobileMenu.classList.toggle('active');
 	  });
 });
+
+
+
+function isEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+}
+
+function validatePasswordLength(password){
+    return password.length >= 8 || password.value != null;
+}
+
+function arePasswordsSame(password, confirmPassword){
+    console.log(password + "      " + confirmPassword);
+    return confirmPassword != "" && password === confirmPassword;
+}
+
+function validateCity(city){
+    return city.length >= 4 || city.value != null;
+}
+
+function validateProfileName(profileName){
+    return profileName.length > 5 || profileName.value != null;
+}
+
+function validateDescription(description){
+    return description.length >= 40 || description.value != null;
+}
+
+function markValidation(element, condition){
+    if(!condition){
+        element.classList.add('no-valid');
+    }else
+		element.classList.remove('no-valid');
+}
+
+function checkIfFieldIsEmpty(value){
+	let temp = value.trim();
+	return temp.length == 0 ? true : false;
+}

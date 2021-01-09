@@ -51,7 +51,7 @@
             </span>
                 
             <div class="button">
-                <button class="red-button" type="submit">Save</button>
+                <button name="save" class="red-button" type="submit" disabled>Save</button>
             </div>
         </form>
 
@@ -60,5 +60,6 @@
     <?php include('public/templates/footer.php'); ?>
 
     <script src="public/js/app.js"></script>
+    <script src="public/js/accountUpdateValidation.js"></script>
 </body>
 </html>
