@@ -12,8 +12,6 @@
     <?php include('public/templates/navbar.php'); ?>
 
     <div class="container">
-
-
         <section class="my-announcements">
             <h1>My announcements</h1>
             <table class="styled-table">
@@ -42,8 +40,7 @@
                         }
                         else
                             echo '<tr><td colspan="6">You do not share any job offers</td></tr>'
-                    ?>
-                    
+                    ?>  
                 </tbody>
             </table>
         </section>
