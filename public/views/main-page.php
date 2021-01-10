@@ -22,7 +22,7 @@
         <div class="row">
             <div class="row-item" style="align-items: flex-end;">
                 <div class="btn">
-                    <a class="register" href="login">Register</a>
+                    <a class="register" href="register">Register</a>
                 </div>
             </div>
         </div>

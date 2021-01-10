@@ -4,27 +4,11 @@
 }
 
 .container{
-    height: 80vh;
+    height: 100%;
     width: 100%;
-}
-table{
-    position: relative;
-    width: 80%;
-}
-table, th, td{
-    border-collapse: collapse;
-    font-size: 1.2em;
-    border: 1px solid black;
+    margin: 100px 0;
 }
 
-table td, table th{
-    padding: 15px;
-}
-
-table th{
-    text-align: left;
-    background: #FBF4EF 0% 0% no-repeat padding-box;
-}
 
 .footer{
     position: relative;
@@ -41,6 +25,15 @@ table th{
 
     table{
         margin-top: 2em;
+    }
+
+    table, th, td{
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    table td{
+        padding: 5px;
     }
 
     .main-content{

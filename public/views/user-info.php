@@ -13,7 +13,8 @@
 
     <div class="container">
         <div class="user">
-                <h1>About user</h1>
+
+        <h1>About user</h1>
                 <hr>
                 <div class="details">
                     <?php 
@@ -35,7 +36,6 @@
                     <button name="show-cv">Show CV</button>
                 </div>
             </div>
-            
         </div>
     </div>
 

@@ -25,8 +25,8 @@
                 <h2>Password</h2>
                 <input name="password" type="password" placeholder="password">
                 <div class="buttons">
-                    <button class="transparent-button">Sign up</button>
-                    <button class="transparent-button" type="submit">Login</button>
+                    <button class="transparent-button" name="action" value="register">Sign up</button>
+                    <button class="transparent-button" name="action" type="submit">Login</button>
                 </div>
             </form>
         </div>

@@ -4,7 +4,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    
+    overflow: hidden;
 }
 
 .footer{
@@ -40,6 +40,7 @@ table th{
 .my-announcements, .applied-jobs{
     text-align: center;
     width: 100%;
+    overflow-x: auto;
 }
 
 h1{

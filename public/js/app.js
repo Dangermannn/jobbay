@@ -75,5 +75,7 @@ function checkIfFieldIsEmpty(value){
 }
 
 function routeToAddingAnnouncement(){
-	window.location.href = window.location.href.substr(0, window.location.href.lastIndexOf('/')) + "/announcementForm";
+	window.location.href = 
+	window.location.href.substr(0, window.location.href.lastIndexOf('/'))
+		 + "/announcementForm";
 }

@@ -19,6 +19,11 @@ class SecurityController extends AppController
 
     public function loginUser()
     {
+        if($_POST['action'] == 'register'){
+            $this->register();
+            return;
+        }
+        var_dump($_POST['action']);
 
         $userRepository = new UserRepository();
 
