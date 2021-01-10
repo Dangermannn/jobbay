@@ -6,6 +6,13 @@ require_once __DIR__.'/../repository/UserRepository.php';
 
 class SecurityController extends AppController
 {
+    private $userRepo;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->userRepo = new UserRepository();
+    }
 
     public function login()
     {
@@ -23,17 +30,14 @@ class SecurityController extends AppController
             $this->register();
             return;
         }
-        var_dump($_POST['action']);
 
-        $userRepository = new UserRepository();
-
-        if($this->isPost())
+        if(!$this->isPost())
             return $this->login('login');
 
         $email = $_POST["email"];
         $password = $_POST["password"];
 
-        $user = $userRepository->getUserForLogin($email);
+        $user = $this->userRepo->getUserForLogin($email);
 
         if(!$user)
             return $this->render('login', ['messages' => ['User with this email does not exist']]);
@@ -53,7 +57,6 @@ class SecurityController extends AppController
 
     public function registerUser(){
 
-        $userRepository = new UserRepository();
         
         $email = $_POST["email"];
         $password = $_POST["password"];
@@ -61,11 +64,11 @@ class SecurityController extends AppController
         $city = $_POST["city"];
         $description = $_POST["profile-description"];
 
-        $user = $userRepository->getUser($email);
+        $user = $this->userRepo->getUser($email);
         if($user != null)
             return $this->render('register', ['messages' => ["Account with that email already exists"]]);
         
-        $userRepository->registerUser($email, $name, $city, $password, $description);
+        $this->userRepo->registerUser($email, $name, $city, $password, $description);
 
         $this->render('login', ['messages' => ['Account has been created successfully!']]);
     }

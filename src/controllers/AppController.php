@@ -4,7 +4,7 @@ class AppController{
 
     private $request;
 
-    public function _construct(){
+    public function __construct(){
         $this->request = $_SERVER['REQUEST_METHOD'];
     }
 

@@ -8,6 +8,13 @@ require_once  __DIR__.'/../repository/AnnouncementRepository.php';
 
 class AnnouncementsController extends AppController
 {
+    private $repo;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->announcementRepo = new AnnouncementRepository();
+    }
 
     public function jobListening()
     {
@@ -27,9 +34,7 @@ class AnnouncementsController extends AppController
         $url = $_SERVER['REQUEST_URI'];
         $id = substr($url, strrpos($url, '/') + 1);
 
-        $repo = new AnnouncementRepository();
-
-        $announcement = $repo->getAnnouncementById(intval($_GET['id']));
+        $announcement = $this->announcementRepo->getAnnouncementById(intval($_GET['id']));
         
         $this->render('announcement-details', ['data' => $announcement]); // announcement-details
     }
@@ -44,36 +49,19 @@ class AnnouncementsController extends AppController
         $this->render('announcement-form');
     }
 
-    public function getAnnouncement(string $username): ?array
-    {
-        $user = new User('test@abcdef', 'password', 'name');
-        $announcement = new Announcement('random title', 'random description',
-            'Warsaw', 5);
-        $announcement->setAdvertiser($user);
-
-
-        if(($announcement->getUser())->getName() === $username){
-            return $announcement;
-        }
-        return null;
-    }
-
     public function getAllAnnouncements(string $key): array 
     {
-        $repo = new AnnouncementRepository();
-
-        return $repo->getAnnouncement($key);
+        return $this->announcementRepo->getAnnouncement($key);
     }
 
     public function addAnnouncement(): void
     {
-        $repo = new AnnouncementRepository();
         session_start();
         $announcement = new Announcement($_POST['title'],
              $_POST['announcement-description'], $_POST['localization'],
               intval($_POST['experience']), date("Y-m-d"), null, $_SESSION['id']);
 
-        $repo->addAnnouncement($announcement);
+        $this->announcementRepo->addAnnouncement($announcement);
 
         header("Location: {$url}/accountDetails");
     }
@@ -81,22 +69,19 @@ class AnnouncementsController extends AppController
     public function removeAnnouncement($id_announcement)
     {
         session_start();
-        $repo = new AnnouncementRepository();
-        $repo->removeAnnouncement($id_announcement);
+        $this->announcementRepo->removeAnnouncement($id_announcement);
     }
 
     public function addUserAsApplier($id_announcement)
     {
         session_start();
-        $repo = new AnnouncementRepository();
-        $repo->addApplier($_SESSION['id'], $id_announcement);
+        $this->announcementRepo->addApplier($_SESSION['id'], $id_announcement);
     }
 
     public function removeApplier($id_announcement)
     {
         session_start();
-        $repo = new AnnouncementRepository();
-        $repo->removeApplier($_SESSION['id'], $id_announcement);
+        $this->announcementRepo->removeApplier($_SESSION['id'], $id_announcement);
     }
 
 }

@@ -14,6 +14,16 @@ class AccountController extends AppController{
 
     private $messages = [];
 
+    private $announcementRepo;
+    private $userRepo;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->announcementRepo = new AnnouncementRepository();
+        $this->userRepo = new UserRepository();
+    }
+
     public function accountDetails(){
         session_start();
         if($_SESSION["loggedIn"] != true) {
@@ -21,9 +31,8 @@ class AccountController extends AppController{
             exit();
         }
 
-        $repo = new AnnouncementRepository();
-        $applied = $repo->getAnnouncementsUserAppliedFor($_SESSION['id']);
-        $shared = $repo->getAnnouncementsUserShared($_SESSION['id']);
+        $applied = $this->announcementRepo->getAnnouncementsUserAppliedFor($_SESSION['id']);
+        $shared = $this->announcementRepo->getAnnouncementsUserShared($_SESSION['id']);
 
         $this->render('account-details', ['applied' => $applied, 'shared' => $shared]);
     }
@@ -39,14 +48,12 @@ class AccountController extends AppController{
 
 
     public function accountInfo(){
-        $repo = new UserRepository();
-        $user = $repo->getUser($_GET['email']);
+        $user = $this->userRepo->getUser($_GET['email']);
         $this->render('user-info', ['data' => $user]);
     }
 
 
     public function updateAccount(){
-        $userRepository = new UserRepository();
 
         $password = $_POST["password"];
 
@@ -57,7 +64,7 @@ class AccountController extends AppController{
         $city = $_POST["city"];
         $description = $_POST["profile-description"];
 
-        $userRepository->updateUser($password, $city, $description, $_FILES['file']['tmp_name']);
+        $this->userRepo->updateUser($password, $city, $description, $_FILES['file']['tmp_name']);
         if(is_uploaded_file($_FILES['file']['tmp_name']) && $this->isFileValid($_FILES['file'])){
             
             move_uploaded_file(
