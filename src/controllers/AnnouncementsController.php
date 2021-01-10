@@ -18,11 +18,12 @@ class AnnouncementsController extends AppController
 
     public function jobListening()
     {
-        session_start();
-        if($_SESSION["loggedIn"] != true) {
-            echo("Access denied!");
-            exit();
+        if(!$this->isLoggedIn())
+        {
+            $this->accessDenied();
+            return;
         }
+
         $search_key = $_POST['keyword'] == null ? "" : $_POST['keyword'];
         
         $items = $this->getAllAnnouncements($search_key);
@@ -31,6 +32,7 @@ class AnnouncementsController extends AppController
 
     public function announcementDetails()
     {
+        $this->handleAccess();
         $url = $_SERVER['REQUEST_URI'];
         $id = substr($url, strrpos($url, '/') + 1);
 
@@ -41,11 +43,7 @@ class AnnouncementsController extends AppController
 
     public function announcementForm()
     {
-        session_start();
-        if($_SESSION["loggedIn"] != true) {
-            echo("Access denied!");
-            exit();
-        }
+        $this->handleAccess();
         $this->render('announcement-form');
     }
 
@@ -83,5 +81,6 @@ class AnnouncementsController extends AppController
         session_start();
         $this->announcementRepo->removeApplier($_SESSION['id'], $id_announcement);
     }
+
 
 }

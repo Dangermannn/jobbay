@@ -76,9 +76,10 @@ class SecurityController extends AppController
     public function logout()
     {
         session_start();
-        unset($_SESSION["loggedIn"]);
-        unset($_SESSION["email"]);
-        unset($_SESSION["id"]);
+      //  unset($_SESSION["loggedIn"]);
+     //   unset($_SESSION["email"]);
+       // unset($_SESSION["id"]);
+        session_unset();
         session_destroy();
         $this->render('login', ['messages' => ['You have been logout successfully!']]);
     }

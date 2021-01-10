@@ -25,12 +25,7 @@ class AccountController extends AppController{
     }
 
     public function accountDetails(){
-        session_start();
-        if($_SESSION["loggedIn"] != true) {
-            echo("Access denied!");
-            exit();
-        }
-
+        $this->handleAccess();
         $applied = $this->announcementRepo->getAnnouncementsUserAppliedFor($_SESSION['id']);
         $shared = $this->announcementRepo->getAnnouncementsUserShared($_SESSION['id']);
 
@@ -38,16 +33,13 @@ class AccountController extends AppController{
     }
 
     public function accountSettings(){
-        session_start();
-        if($_SESSION["loggedIn"] != true) {
-            echo("Access denied!");
-            exit();
-        }
+        $this->handleAccess();
         $this->render('account-settings');
     }
 
 
     public function accountInfo(){
+        $this->handleAccess();
         $user = $this->userRepo->getUser($_GET['email']);
         $this->render('user-info', ['data' => $user]);
     }
