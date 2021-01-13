@@ -8,6 +8,7 @@ class User {
     private $cv;
     private $description;
     private $city;
+    private $role;
     public function __construct(
         string $email,
         ?string $password,
@@ -15,18 +16,27 @@ class User {
         ?string $description,
         ?string $city,
         ?string $cv,
-        ?string $id
+        ?string $id,
+        ?string $role
     ) {
         $this->email = $email;
-        if($password != null)
-            $this->password = $password;
+        $this->password = $password;
         $this->name = $name;
         $this->description = $description;
         $this->city = $city;
-        if($cv != null)
-            $this->cv = $cv;
-        if($id != null)
-            $this->id = $id;
+        $this->cv = $cv;
+        $this->id = $id;
+        $this->role = $role;
+    }
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(?string $role): void
+    {
+        $this->role = $role;
     }
 
     public function getId()

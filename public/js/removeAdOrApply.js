@@ -11,7 +11,7 @@ removeButtons.forEach(button => {
  
       button.addEventListener('click', () => {
         const id = button.parentElement.parentElement.getAttribute("id");
-        fetch(`/removeAnnouncement/`)
+        fetch(`/removeAnnouncement/${id}`)
             .then(() => {
                 alert("Announcement has been removed successfully!");
                 const html = '<tr><td colspan="6">You have not applied to any job</td></tr>';
@@ -23,7 +23,7 @@ removeButtons.forEach(button => {
 disapplyButton.forEach(button => {
     button.addEventListener('click', () => {
         const id = button.parentElement.parentElement.getAttribute("id");
-        fetch(`/removeApplier/`)
+        fetch(`/removeApplier/${id}`)
             .then(() => {
                 alert("Announcement has been removed successfully!");
                 const html = '<tr><td colspan="6">You have not applied to any job</td></tr>';

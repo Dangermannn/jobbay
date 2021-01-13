@@ -50,8 +50,11 @@ class SecurityController extends AppController
         $_SESSION["loggedIn"] = true;
         $_SESSION["email"] = $email;
         $_SESSION["id"] = $user->getId();
-
+        $_SESSION['role'] = $user->getRole();
         $url = "http://$_SERVER[HTTP_HOST]";
+
+        if($user->getRole() === 'admin')
+            header("Location: {$url}/");
         header("Location: {$url}/home");
     }
 
@@ -76,9 +79,6 @@ class SecurityController extends AppController
     public function logout()
     {
         session_start();
-      //  unset($_SESSION["loggedIn"]);
-     //   unset($_SESSION["email"]);
-       // unset($_SESSION["id"]);
         session_unset();
         session_destroy();
         $this->render('login', ['messages' => ['You have been logout successfully!']]);

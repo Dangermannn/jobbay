@@ -23,16 +23,18 @@ Routing::get('announcementForm', 'AnnouncementsController');
 Routing::get('removeAnnouncement', 'AnnouncementsController');
 Routing::post('addAnnouncement', 'AnnouncementsController');
 
-Routing::get('accountSettings', 'AccountController');
+Routing::post('accountSettings', 'AccountController');
 Routing::get('accountDetails', 'AccountController');
 Routing::get('accountInfo', 'AccountController');
 
 Routing::post('updateAccount', 'AccountController');
 
 Routing::get('getCv', 'AccountController');
-Routing::get('addUserAsApplier', 'AnnouncementsController');
-Routing::get('removeApplier', 'AnnouncementsController');
+Routing::post('addUserAsApplier', 'AnnouncementsController');
+Routing::post('removeApplier', 'AnnouncementsController');
 Routing::get('logout', 'SecurityController');
 
 
+Routing::get('allUsers', 'AccountController');
+Routing::get('removeUser', 'AccountController');
 Routing::run($path);    

@@ -44,6 +44,23 @@ class AccountController extends AppController{
         $this->render('user-info', ['data' => $user]);
     }
 
+    public function allUsers(){
+        // TODO: changed to use repo from its class (NULL?)
+        $repo = new UserRepository();
+        $this->handleAccess();
+        session_start();
+        //$user = $this->$userRepo->getUser($_SESSION['email']);
+        $user = $repo->getUser($_SESSION['email']);
+        if($user->getRole() == 'admin')
+        {
+            //$users = $this->$userRepo->getAllUsers();
+            $users = $repo->getAllUsers();
+            $this->render('admin/all-users', ['users' => $users]);
+        }
+        else
+            accessDenied();     
+    }
+
 
     public function updateAccount(){
 
@@ -68,13 +85,19 @@ class AccountController extends AppController{
         return $this->render('account-details', ['messages' => $this->messages]);
     }
 
+    public function removeUser($email)
+    {
+        session_start();
+        if($_SESSION['role'] == 'admin')
+            $this->userRepo->removeUser($email);
+    }
+
     public function getCv()
     {
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
         if($contentType === "application/json"){
             $email = trim(file_get_contents("php://input"));
             $decodedEmail = json_decode($email, false);
-            print_r($decodedEmail);
             $userRepository = new UserRepository();
             $user = $userRepository->getUser($decodedEmail['email']);
             if($user->getCv() == null)
@@ -100,5 +123,6 @@ class AccountController extends AppController{
 
         return true;
     }
+
 
 }

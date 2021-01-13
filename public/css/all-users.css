@@ -1,0 +1,9 @@
+.container{
+    height: auto;
+    margin-bottom: 2vh;
+}
+
+
+table{
+    overflow-x: auto;
+}

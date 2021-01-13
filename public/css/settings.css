@@ -47,22 +47,6 @@ h1{
     margin: 30px;
 }
 
-.removeButton{
-    border: 2px solid #F50000EA;
-    background-color: #EF233C;
-    width: 80px;
-    height: 40px;
-    color: white;
-    border-radius: 4px;
-    font-weight: 500;
-    letter-spacing: .1em;
-    transition:  0.4s ease background-color;
-}
-
-.removeButton:hover{
-    background-color: #B71125;
-    border: 0px dotted #FF7384;
-}
 
 .settings{
     margin: 50px 0;
