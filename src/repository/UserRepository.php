@@ -122,58 +122,59 @@ class UserRepository extends Repository
 
     public function updateUser(string $password, string $city, string $description, string $cv_path)
     {
-        if(!isset($_SESSION))
-            session_start();
+        session_start();
+        $st = "UPDATE public.users SET ";
+        $stDetails = "UPDATE public.user_details SET ";
 
-        $stUsers = "UPDATE public.users SET ";
+        $this->database->connect()->beginTransaction();
 
 
         if($password != null)
         {
             if(strlen($password) < 8)
                 return;
-            $st."password='".$password."'";
+            $st = $st."password='".$password."'"." WHERE email='".$email."'";
 
-            $statement = $this->database->connect()->prepare(
-                $stUsers." WHERE email='".$email."'"
-            );
-
+            $statement = $this->database->connect()->prepare($st);
             $statement->execute();
         }
 
         if($city != null)
         {
-            if(substr($st, -1) == "'")
-                $st = $st.", "."city='".$city."'";
+            if(substr($stDetails, -1) == "'")
+                $stDetails = $stDetails.", "."city='".$city."'";
             else
-                $st = $st."city='".$city."'";
+                $stDetails = $stDetails."city='".$city."'";
 
         }
 
         if($description != null)
         {
-            if(substr($st, -1) == "'")
-                $st = $st.", "."description='".$description."'";
+            if(substr($stDetails, -1) == "'")
+                $stDetails = $stDetails.", "."description='".$description."'";
             else
-                $st = $st."description='".$description."'";
+                $stDetails = $stDetails."description='".$description."'";
                 
         }
         
         if($cv_path != null)
         {   
-            if(substr($st, -1) == "'")
-                $st = $st.", "."cv_path='".$cv_path."'";
+            if(substr($stDetails, -1) == "'")
+                $stDetails = $stDetails.", "."cv_path='".$cv_path."'";
             else
-                $st = $st."cv_path='".$cv_path."'";
+                $stDetails = $stDetails."cv_path='".$cv_path."'";
 
         }
 
-        $email = $_SESSION['email'];
+        $stDetails = $stDetails.' FROM public.users WHERE public.user_details.id = public.users.id_user_details AND public.users.id = ';
 
+        $id = $_SESSION['id'];
         $statement = $this->database->connect()->prepare(
-            $st." WHERE email='".$email."'"
+            $stDetails.':id'
         );
 
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        //var_dump($stDetails.$id);
         $statement->execute();
     }
 
