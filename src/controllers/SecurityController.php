@@ -54,8 +54,8 @@ class SecurityController extends AppController
         $url = "http://$_SERVER[HTTP_HOST]";
 
         if($user->getRole() === 'admin')
-            header("Location: {$url}/");
-        header("Location: {$url}/home");
+            return header("Location: {$url}/allUsers");
+        return header("Location: {$url}/home");
     }
 
     public function registerUser(){
