@@ -3,10 +3,12 @@
 class AppController
 {
 
+    private $URL;
     private $request;
 
     public function __construct()
     {
+        $this->URL = "http://$_SERVER[HTTP_HOST]";
         $this->request = $_SERVER['REQUEST_METHOD'];
     }
 
@@ -41,6 +43,17 @@ class AppController
         if(!$this->isLoggedIn())
             $this->accessDenied();
     }
+
+    protected function hasExceedInactivityTime()
+    {
+        session_start();
+        if(time() - $_SESSION['timestamp'] > 900)
+            return true;
+        $_SESSION['timestamp'] = time();
+        var_dump($_SESSION['timestamp']);
+        return false;
+    }
+
 
 
     protected function render(string $template = null, array $variables = [])

@@ -33,6 +33,8 @@ class AnnouncementsController extends AppController
     public function announcementDetails()
     {
         $this->handleAccess();
+        if($this->hasExceedInactivityTime())              
+            return header("Location: {$this->URL}/logout");
         $url = $_SERVER['REQUEST_URI'];
         $id = substr($url, strrpos($url, '/') + 1);
 
@@ -44,6 +46,8 @@ class AnnouncementsController extends AppController
     public function announcementForm()
     {
         $this->handleAccess();
+        if($this->hasExceedIncativityTime())              
+            return header("Location: {$this->URL}/logout");
         $this->render('announcement-form');
     }
 
@@ -52,8 +56,11 @@ class AnnouncementsController extends AppController
         return $this->announcementRepo->getAnnouncement($key);
     }
 
-    public function addAnnouncement(): void
+    public function addAnnouncement()
     {
+        $this->handleAccess();
+        if($this->hasExceedIncativityTime())              
+            return header("Location: {$this->URL}/logout");
         session_start();
         $announcement = new Announcement($_POST['title'],
              $_POST['announcement-description'], $_POST['localization'],
@@ -66,18 +73,27 @@ class AnnouncementsController extends AppController
 
     public function removeAnnouncement($id_announcement)
     {
+        $this->handleAccess();
+        if($this->hasExceedIncativityTime())              
+            return header("Location: {$this->URL}/logout");
         session_start();
         $this->announcementRepo->removeAnnouncement($id_announcement);
     }
 
     public function addUserAsApplier($id_announcement)
     {
+        $this->handleAccess();
+        if($this->hasExceedIncativityTime())              
+            return header("Location: {$this->URL}/logout");
         session_start();
         $this->announcementRepo->addApplier($_SESSION['id'], $id_announcement);
     }
 
     public function removeApplier($id_announcement)
     {
+        $this->handleAccess();
+        if($this->hasExceedIncativityTime())              
+            return header("Location: {$this->URL}/logout");
         session_start();
         $this->announcementRepo->removeApplier($_SESSION['id'], $id_announcement);
     }

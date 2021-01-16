@@ -26,6 +26,9 @@ class AccountController extends AppController{
 
     public function accountDetails(){
         $this->handleAccess();
+        if($this->hasExceedInactivityTime())              
+            return header("Location: {$this->URL}/logout");
+
         $applied = $this->announcementRepo->getAnnouncementsUserAppliedFor($_SESSION['id']);
         $shared = $this->announcementRepo->getAnnouncementsUserShared($_SESSION['id']);
 
@@ -34,12 +37,18 @@ class AccountController extends AppController{
 
     public function accountSettings(){
         $this->handleAccess();
+        if($this->hasExceedInactivityTime())              
+            return header("Location: {$this->URL}/logout");
+
         $this->render('account-settings');
     }
 
 
     public function accountInfo(){
         $this->handleAccess();
+        if($this->hasExceedInactivityTime())              
+            return header("Location: {$this->URL}/logout");
+
         $user = $this->userRepo->getUser($_GET['email']);
         $this->render('user-info', ['data' => $user]);
     }
@@ -48,6 +57,9 @@ class AccountController extends AppController{
         // TODO: changed to use repo from its class (NULL?)
         $repo = new UserRepository();
         $this->handleAccess();
+        if($this->hasExceedInactivityTime())              
+            return header("Location: {$this->URL}/logout");
+
         session_start();
         //$user = $this->$userRepo->getUser($_SESSION['email']);
         $user = $repo->getUser($_SESSION['email']);
@@ -63,6 +75,9 @@ class AccountController extends AppController{
 
 
     public function updateAccount(){
+        $this->handleAccess();
+        if($this->hasExceedInactivityTime())              
+            return header("Location: {$this->URL}/logout");
 
         $password = $_POST["password"];
 
@@ -87,6 +102,10 @@ class AccountController extends AppController{
 
     public function removeUser($email)
     {
+        $this->handleAccess();
+        if($this->hasExceedInactivityTime())              
+            return header("Location: {$this->URL}/logout");
+
         session_start();
         if($_SESSION['role'] == 'admin')
             $this->userRepo->removeUser($email);
