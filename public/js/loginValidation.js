@@ -9,3 +9,14 @@ emailInput.addEventListener('blur', () => {
 passwordInput.addEventListener('blur', () => {
     markValidation(passwordInput, validatePasswordLength(passwordInput.value));
 });
+
+function markValidation(element, condition){
+    if(!condition){
+        element.classList.add('no-valid');
+    }else
+		element.classList.remove('no-valid');
+}
+
+function isEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+}

@@ -3,30 +3,29 @@ const mobileMenu = document.querySelector('.nav .nav-bar .nav-list ul');
 const menuItem = document.querySelectorAll('.nav .nav-bar .nav-list ul li a');
 const header = document.querySelector('.nav .nav-bar');
 
+const MAX_INACTIVITY = 900;
+let logoutTimer = MAX_INACTIVITY; // in seconds
+
+setInterval(updateTimer, 1000);
 
 hamburger.addEventListener('click', () => {
 	hamburger.classList.toggle('active');
 	mobileMenu.classList.toggle('active');
-	//header.style.height = "100vh";
 	header.classList.toggle('active-nav');
 });
 
-/*
-document.addEventListener('scroll', () => {
-	var scrollPosition = window.scrollY;
-	if(scrollPosition > 250){
-		header.style.backgroundColor = "#29323c";
-	} else{
-		header.style.backgroundColor = "transparent";
-	}
-})
-*/
 menuItem.forEach(element => {
   	element.addEventListener('click', () => {
 		hamburger.classList.toggle('active');
 		mobileMenu.classList.toggle('active');
 	  });
 });
+
+function updateTimer(){
+	logoutTimer--;
+	if(logoutTimer < 1)
+		window.location = 'logout';
+}
 
 function isEmail(email) {
     return /\S+@\S+\.\S+/.test(email);

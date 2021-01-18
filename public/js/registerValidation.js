@@ -10,15 +10,6 @@ const signUpButton = form.querySelector('button[name="sign-up"]');
 const allInputs = form.querySelectorAll('input');
 const description = form.getElementsByTagName('textarea');
 
-function isAllCorrect(){
-    if(description[0].classList.contains('no-valid'))
-        return;
-    for(i = 0; i < allInputs.length; i++){
-        if(allInputs[i].classList.contains('no-valid'))
-            return;
-    }
-    signUpButton.disabled = false;
-}
 
 cityInput.addEventListener('blur', () => {
     markValidation(cityInput, validateCity(cityInput.value));
@@ -51,6 +42,16 @@ password.addEventListener('blur', () => {
     markValidation(password, validatePasswordLength(password.value));
     isAllCorrect();
 });
+
+function isAllCorrect(){
+    if(description[0].classList.contains('no-valid'))
+        return;
+    for(i = 0; i < allInputs.length; i++){
+        if(allInputs[i].classList.contains('no-valid'))
+            return;
+    }
+    signUpButton.disabled = false;
+}
 
 
 function routeToLogin(){
