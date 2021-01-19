@@ -96,6 +96,7 @@ table th{
 
 .container{
     margin-top: 12vh;
+    margin-bottom: 12vh;
     width: calc(100% - 1px);
     height: calc(100% - 1px);
     display: flex;

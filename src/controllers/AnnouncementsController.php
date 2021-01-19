@@ -46,7 +46,7 @@ class AnnouncementsController extends AppController
     public function announcementForm()
     {
         $this->handleAccess();
-        if($this->hasExceedIncativityTime())              
+        if($this->hasExceedInactivityTime())              
             return header("Location: {$this->URL}/logout");
         $this->render('announcement-form');
     }
@@ -59,7 +59,7 @@ class AnnouncementsController extends AppController
     public function addAnnouncement()
     {
         $this->handleAccess();
-        if($this->hasExceedIncativityTime())              
+        if($this->hasExceedInactivityTime())              
             return header("Location: {$this->URL}/logout");
         session_start();
         $announcement = new Announcement($_POST['title'],
@@ -74,7 +74,7 @@ class AnnouncementsController extends AppController
     public function removeAnnouncement($id_announcement)
     {
         $this->handleAccess();
-        if($this->hasExceedIncativityTime())              
+        if($this->hasExceedInactivityTime())              
             return header("Location: {$this->URL}/logout");
         session_start();
         $this->announcementRepo->removeAnnouncement($id_announcement);
@@ -83,7 +83,7 @@ class AnnouncementsController extends AppController
     public function addUserAsApplier($id_announcement)
     {
         $this->handleAccess();
-        if($this->hasExceedIncativityTime())              
+        if($this->hasExceedInactivityTime())              
             return header("Location: {$this->URL}/logout");
         session_start();
         $this->announcementRepo->addApplier($_SESSION['id'], $id_announcement);
@@ -92,7 +92,7 @@ class AnnouncementsController extends AppController
     public function removeApplier($id_announcement)
     {
         $this->handleAccess();
-        if($this->hasExceedIncativityTime())              
+        if($this->hasExceedInactivityTime())              
             return header("Location: {$this->URL}/logout");
         session_start();
         $this->announcementRepo->removeApplier($_SESSION['id'], $id_announcement);
