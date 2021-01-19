@@ -5,8 +5,6 @@ require_once __DIR__.'/../models/User.php';
 
 class UserRepository extends Repository
 {
-
-
     public function getUser(string $email) : ?User {
         $statement = $this->database->connect()->prepare('
             SELECT public.users.email, public.user_details.description, public.user_details.name,
@@ -62,6 +60,39 @@ class UserRepository extends Repository
             );
         } 
         return $return;       
+    }
+
+    public function getActiveUsers()
+    {
+        $statement = $this->database->connect()->prepare('
+        SELECT public.users.id, public.users.email, public.user_details.name,
+        public.user_details.city, public.role.role, public.sessions.logged_in FROM public.users
+            LEFT JOIN public.user_details
+                 ON public.user_details.id = public.users.id
+            LEFT JOIN public.role
+                 ON public.role.id = public.users.id_role
+            LEFT JOIN public.sessions
+                ON public.sessions.id_user = public.users.id
+            WHERE public.sessions.logged_in = true
+            GROUP BY public.users.email, public.users.id, public.user_details.name,
+                public.user_details.city, public.role.role, public.sessions.logged_in
+        ');
+        $statement->execute();
+        $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach($users as $user){
+            $return[] = new User(
+                $user['email'],
+                null, 
+                $user['name'], 
+                null, 
+                $user['city'], 
+                null, 
+                $user['id'],
+                $user['role']
+            );
+        } 
+        return $return;  
     }
 
     public function getUserForLogin(string $email) : ?User {

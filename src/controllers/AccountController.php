@@ -70,7 +70,24 @@ class AccountController extends AppController{
             $this->render('admin/all-users', ['users' => $users]);
         }
         else
-            accessDenied();     
+            $this->accessDenied();     
+    }
+
+    public function activeUsers(){
+        $this->handleAccess();
+        if($this->hasExceedInactivityTime())              
+            return header("Location: {$this->URL}/logout");
+        
+        session_start();
+        $user = $this->userRepo->getUser($_SESSION['email']);
+        if($user->getRole() == 'admin')
+        {
+            //$users = $this->$userRepo->getAllUsers();
+            $users = $this->userRepo->getActiveUsers();
+            $this->render('admin/logged-users', ['users' => $users]);
+        }
+        else
+            $this->accessDenied();    
     }
 
 
@@ -101,6 +118,18 @@ class AccountController extends AppController{
     }
 
     public function removeUser($email)
+    {
+        $this->handleAccess();
+        if($this->hasExceedInactivityTime())              
+            return header("Location: {$this->URL}/logout");
+
+        session_start();
+        if($_SESSION['role'] == 'admin')
+            $this->userRepo->removeUser($email);
+            
+    }
+
+    public function loggedUseres()
     {
         $this->handleAccess();
         if($this->hasExceedInactivityTime())              

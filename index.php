@@ -37,4 +37,6 @@ Routing::get('logout', 'SecurityController');
 
 Routing::get('allUsers', 'AccountController');
 Routing::get('removeUser', 'AccountController');
+Routing::get('activeUsers', 'AccountController');
+
 Routing::run($path);    

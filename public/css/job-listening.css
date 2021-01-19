@@ -1,21 +1,6 @@
-.nav {
-    position: absolute;
-    overflow-x: hidden;
-}
 
 .container{
-    height: 100%;
-    width: 100%;
     margin: 100px 0;
-}
-
-
-.footer{
-    position: relative;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    overflow-x: hidden;
 }
 
 @media only screen and (max-width: 1200px){
