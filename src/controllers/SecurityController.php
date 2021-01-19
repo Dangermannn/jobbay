@@ -41,7 +41,6 @@ class SecurityController extends AppController
 
         if(!$user)
             return $this->render('login', ['messages' => ['User with this email does not exist']]);
-        
     
         if(!password_verify($password, $user->getPassword()))
             return $this->render('login', ['messages' => ['Incorrect password']]);
@@ -54,15 +53,14 @@ class SecurityController extends AppController
         $_SESSION['timestamp'] = time();
 
         $url = "http://$_SERVER[HTTP_HOST]";
-
+        $this->sessionRepo->insertNewSession(session_id(), $user->getId());
         if($user->getRole() === 'admin')
             return header("Location: {$url}/allUsers");
         return header("Location: {$url}/home");
     }
 
-    public function registerUser(){
-
-        
+    public function registerUser()
+    {
         $email = $_POST["email"];
         $password = $_POST["password"];
         $name = $_POST["profile-name"];
@@ -74,13 +72,13 @@ class SecurityController extends AppController
             return $this->render('register', ['messages' => ["Account with that email already exists"]]);
         
         $this->userRepo->registerUser($email, $name, $city, $password, $description);
-
         $this->render('login', ['messages' => ['Account has been created successfully!']]);
     }
 
     public function logout()
     {
         session_start();
+        $this->sessionRepo->updateSession(session_id(), $_SESSION['id'], 'false');
         session_unset();
         session_destroy();
         $this->render('login', ['messages' => ['You have been logout successfully!']]);

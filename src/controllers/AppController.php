@@ -1,15 +1,20 @@
 <?php
 
+require_once __DIR__.'/../repository/SessionRepository.php';
+
 class AppController
 {
 
     private $URL;
     private $request;
 
+    protected $sessionRepo;
+
     public function __construct()
     {
         $this->URL = "http://$_SERVER[HTTP_HOST]";
         $this->request = $_SERVER['REQUEST_METHOD'];
+        $this->sessionRepo = new SessionRepository();
     }
 
     protected function isPost() : bool
@@ -50,7 +55,7 @@ class AppController
         if(time() - $_SESSION['timestamp'] > 900)
             return true;
         $_SESSION['timestamp'] = time();
-        var_dump($_SESSION['timestamp']);
+        $this->sessionRepo->updateSession(session_id(), $_SESSION['id'], 'true');
         return false;
     }
 
