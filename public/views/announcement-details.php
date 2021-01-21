@@ -41,12 +41,45 @@
                         echo '<p>'.$data->getDescription().'</p>';
                     ?>
                 </div>
+
+
             </div>
+                   
+
             
-            <button id="apply">Apply</button>
+
         </div>
+
+        <?php
+                    if(isset($appliers))
+                    {
+                        echo '<div class="card-containter">';
+                        foreach($appliers as $applier){
+                            echo '
+                                <div class="card">
+                                    <div class="content">
+                                        <span>Email:</span> <a href="/accountInfo?email='.$applier->getEmail().'">'.$applier->getEmail().'</a>
+                                    </div>
+                                    <button class="">Remove appliancer</button>
+                                </div>
+                            ';
+                        }
+                        echo '</div>';
+                    }
+                    else if($appliers === [])
+                    {
+
+                    }
+                    else
+                        echo '<button id="apply">Apply</button>';
+
+        ?>
+
     </div>
 
+
+
+    
     <?php include('public/templates/footer.php'); ?>
 
     <script src="public/js/app.js"></script>

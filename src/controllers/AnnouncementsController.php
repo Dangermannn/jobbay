@@ -40,7 +40,15 @@ class AnnouncementsController extends AppController
 
         $announcement = $this->announcementRepo->getAnnouncementById(intval($_GET['id']));
         
-        $this->render('announcement-details', ['data' => $announcement]); // announcement-details
+        $isAnnouncer = false;
+        session_start();
+        if($announcement->getAdvertiser() == $_SESSION['email'])
+        {
+            $appliers = $this->announcementRepo->getUsersAppliedFor(intval($_GET['id']));
+            return $this->render('announcement-details', ['data' => $announcement, 'appliers' => $appliers]); // announcement-details
+        }
+        else
+            return $this->render('announcement-details', ['data' => $announcement]);
     }
 
     public function announcementForm()

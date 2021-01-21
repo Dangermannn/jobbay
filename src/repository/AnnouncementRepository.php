@@ -127,6 +127,41 @@ class AnnouncementRepository extends Repository
         return $return;
     }
 
+    public function getUsersAppliedFor(int $announcementId)
+    {
+        $statement = $this->database->connect()->prepare(
+            '
+            SELECT public.users.email
+            FROM public.users
+                LEFT JOIN public.announcements_users
+                    ON public.users.id = public.announcements_users.id_user
+            WHERE public.announcements_users.id_announcement = :id
+            '
+        );
+        var_dump($announcementId);
+        $statement->bindParam(":id", $announcementId, PDO::PARAM_INT);
+        $statement->execute();
+
+        $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+        //$statement->debugDumpParams();
+        //var_dump($users);
+
+        foreach($users as $user){
+            $return[] = new User(
+                $user['email'],
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            );
+        }
+
+        return $return;
+    }
+
     public function addAnnouncement(Announcement $announcement): void
     {
         $statement = $this->database->connect()->prepare(
