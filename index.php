@@ -32,6 +32,7 @@ Routing::post('updateAccount', 'AccountController');
 Routing::get('getCv', 'AccountController');
 Routing::post('addUserAsApplier', 'AnnouncementsController');
 Routing::post('removeApplier', 'AnnouncementsController');
+Routing::post('removeUserAppliance', 'AnnouncementsController');
 Routing::get('logout', 'SecurityController');
 
 

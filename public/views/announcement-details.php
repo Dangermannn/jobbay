@@ -53,32 +53,29 @@
         <?php
                     if(isset($appliers))
                     {
-                        echo '<div class="card-containter">';
-                        foreach($appliers as $applier){
-                            echo '
-                                <div class="card">
-                                    <div class="content">
-                                        <span>Email:</span> <a href="/accountInfo?email='.$applier->getEmail().'">'.$applier->getEmail().'</a>
+                        if(empty($appliers))
+                            echo '<h3>No appliers</h3>';
+                        else{
+                            echo '<div class="card-containter">';
+                            foreach($appliers as $applier){
+                                echo '
+                                    <div id="'.$applier->getId().'" class="card">
+                                        <div class="content">
+                                            <span>Email:</span> <a href="/accountInfo?email='.$applier->getEmail().'">'.$applier->getEmail().'</a>
+                                        </div>
+                                        <button name="remove" class="">Remove appliancer</button>
                                     </div>
-                                    <button class="">Remove appliancer</button>
-                                </div>
-                            ';
+                                ';
+                            }
+                            echo '</div>';
                         }
-                        echo '</div>';
-                    }
-                    else if($appliers === [])
-                    {
 
                     }
                     else
-                        echo '<button id="apply">Apply</button>';
-
+                        echo '<button id="apply" class="red-button">Apply</button>';
         ?>
 
     </div>
-
-
-
     
     <?php include('public/templates/footer.php'); ?>
 

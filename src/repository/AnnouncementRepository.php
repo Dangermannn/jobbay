@@ -131,7 +131,7 @@ class AnnouncementRepository extends Repository
     {
         $statement = $this->database->connect()->prepare(
             '
-            SELECT public.users.email
+            SELECT public.users.email, public.users.id
             FROM public.users
                 LEFT JOIN public.announcements_users
                     ON public.users.id = public.announcements_users.id_user
@@ -143,8 +143,6 @@ class AnnouncementRepository extends Repository
         $statement->execute();
 
         $users = $statement->fetchAll(PDO::FETCH_ASSOC);
-        //$statement->debugDumpParams();
-        //var_dump($users);
 
         foreach($users as $user){
             $return[] = new User(
@@ -154,12 +152,12 @@ class AnnouncementRepository extends Repository
                 null,
                 null,
                 null,
-                null,
+                $user['id'],
                 null
             );
         }
 
-        return $return;
+        return $return == null ? [] : $return;
     }
 
     public function addAnnouncement(Announcement $announcement): void

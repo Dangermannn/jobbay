@@ -106,5 +106,12 @@ class AnnouncementsController extends AppController
         $this->announcementRepo->removeApplier($_SESSION['id'], $id_announcement);
     }
 
-
+    public function removeUserAppliance($id_announcement)
+    {
+        $this->handleAccess();
+        session_start();
+        if($this->hasExceedInactivityTime()) //|| $_SESSION['id'] !== $id_user        
+            return header("Location: {$this->URL}/logout");
+        $this->announcementRepo->removeApplier($_GET['user'], $id_announcement);
+    }
 }

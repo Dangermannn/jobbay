@@ -51,12 +51,6 @@ h1{
     color: white;
 }
 
-.footer{
-    flex-direction: column;
-    overflow-x: hidden;
-}
-
-
 span{
     color: red;
     font-weight: 1000;
