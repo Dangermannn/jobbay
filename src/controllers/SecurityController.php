@@ -81,6 +81,6 @@ class SecurityController extends AppController
         $this->sessionRepo->updateSession(session_id(), $_SESSION['id'], 'false');
         session_unset();
         session_destroy();
-        $this->render('login', ['messages' => ['You have been logout successfully!']]);
+        $this->render('login', ['messages' => ['You have been logged out successfully!']]);
     }
 }
