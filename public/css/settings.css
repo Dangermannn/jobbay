@@ -116,13 +116,11 @@ div form .inputs{
 @media 
 only screen and (max-width: 1200px)  {
 
-	/* Force table to not be like tables anymore */
 	table, thead, tbody, th, td, tr { 
         display: block;
         text-align: e;
 	}
 	
-	/* Hide table headers (but not display: none;, for accessibility) */
 	thead tr { 
 		position: absolute;
 		top: -9999px;
@@ -132,17 +130,18 @@ only screen and (max-width: 1200px)  {
 	tr { border: 1px solid #ccc; }
 
 	td { 
-		/* Behave  like a "row" */
 		border: none;
 		border-bottom: 1px solid #eee; 
 		position: relative;
 		padding-left: 50%; 
     }
 
+    td:first-child{
+        background-color: #fcf4ec;
+    }
+
 	td:before { 
-		/* Now like a table header */
 		position: absolute;
-		/* Top/left values mimic padding */
 		top: 6px;
 		left: 6px;
 		width: 45%; 

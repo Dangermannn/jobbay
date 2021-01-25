@@ -21,6 +21,10 @@
         padding: 5px;
     }
 
+    td:first-child{
+        background-color: #fcf4ec;
+    }
+
     .main-content{
         overflow-x: auto;
     }
