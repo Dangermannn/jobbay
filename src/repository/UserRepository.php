@@ -205,7 +205,7 @@ class UserRepository extends Repository
         );
 
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
-        //var_dump($stDetails.$id);
+
         $statement->execute();
     }
 

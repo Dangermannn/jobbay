@@ -138,7 +138,6 @@ class AnnouncementRepository extends Repository
             WHERE public.announcements_users.id_announcement = :id
             '
         );
-        var_dump($announcementId);
         $statement->bindParam(":id", $announcementId, PDO::PARAM_INT);
         $statement->execute();
 
