@@ -23,6 +23,8 @@ Routing::get('announcementForm', 'AnnouncementsController');
 Routing::get('removeAnnouncement', 'AnnouncementsController');
 Routing::post('addAnnouncement', 'AnnouncementsController');
 
+Routing::get('messages', 'MessagesController');
+
 Routing::post('accountSettings', 'AccountController');
 Routing::get('accountDetails', 'AccountController');
 Routing::get('accountInfo', 'AccountController');
