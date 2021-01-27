@@ -61,11 +61,9 @@ class AccountController extends AppController{
             return header("Location: {$this->URL}/logout");
 
         session_start();
-        //$user = $this->$userRepo->getUser($_SESSION['email']);
         $user = $repo->getUser($_SESSION['email']);
         if($user->getRole() == 'admin')
         {
-            //$users = $this->$userRepo->getAllUsers();
             $users = $repo->getAllUsers();
             $this->render('admin/all-users', ['users' => $users]);
         }
@@ -82,7 +80,6 @@ class AccountController extends AppController{
         $user = $this->userRepo->getUser($_SESSION['email']);
         if($user->getRole() == 'admin')
         {
-            //$users = $this->$userRepo->getAllUsers();
             $users = $this->userRepo->getActiveUsers();
             $this->render('admin/logged-users', ['users' => $users]);
         }
@@ -146,8 +143,7 @@ class AccountController extends AppController{
         if($contentType === "application/json"){
             $email = trim(file_get_contents("php://input"));
             $decodedEmail = json_decode($email, false);
-            $userRepository = new UserRepository();
-            $user = $userRepository->getUser($decodedEmail['email']);
+            $user = $this->userRepo->getUser($decodedEmail['email']);
             if($user->getCv() == null)
                 return;
             $pdf = file_get_content('public/uploads/'.$user.getCv());

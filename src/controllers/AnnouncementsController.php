@@ -110,7 +110,7 @@ class AnnouncementsController extends AppController
     {
         $this->handleAccess();
         session_start();
-        if($this->hasExceedInactivityTime()) //|| $_SESSION['id'] !== $id_user        
+        if($this->hasExceedInactivityTime())    
             return header("Location: {$this->URL}/logout");
         $this->announcementRepo->removeApplier($_GET['user'], $id_announcement);
     }
