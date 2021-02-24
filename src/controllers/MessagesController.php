@@ -24,8 +24,10 @@ class MessagesController extends AppController
         
         session_start();
 
+        $users = $this->msgRepo->getUsersForMessages(intval($_SESSION['id']));
         $msgs = $this->msgRepo->getMessages(intval($_SESSION['id']), intval($_GET['recipient']));
-        $this->render('messages', ['messages' => $msgs]);
+
+        $this->render('messages', ['users' => $users, 'messages' => $msgs]);
     }
 
     public function announcementForm()

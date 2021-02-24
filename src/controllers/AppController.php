@@ -5,7 +5,7 @@ require_once __DIR__.'/../repository/SessionRepository.php';
 class AppController
 {
 
-    private $URL;
+    public $URL;
     private $request;
 
     protected $sessionRepo;

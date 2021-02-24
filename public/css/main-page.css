@@ -31,6 +31,10 @@ a{
     width: 100%;
 }
 
+.row-item img{
+    width: 70%;
+}
+
 
 .row-item .btn .register{
     width: 160px;

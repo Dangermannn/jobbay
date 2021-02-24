@@ -149,7 +149,7 @@ class UserRepository extends Repository
             );
 
             $statement->execute([$email, password_hash($password, PASSWORD_BCRYPT), $id['id'], 2]);
-    }
+        }
 
     public function updateUser(string $password, string $city, string $description, string $cv_path)
     {

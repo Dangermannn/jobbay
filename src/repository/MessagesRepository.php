@@ -38,7 +38,8 @@ class MessagesRepository extends Repository
             SELECT * FROM public.messages
             WHERE (id_recipient = :id_user AND messages.recipient_deleted = false
                 AND id_sender = :id_recipient)
-            OR (id_recipient = :id_recipient AND id_sender = :id_user AND sender_deleted = false);
+            OR (id_recipient = :id_recipient AND id_sender = :id_user AND sender_deleted = false)
+            ORDER BY messages.message_sent DESC
         ');
         
 
@@ -60,6 +61,39 @@ class MessagesRepository extends Repository
                 $msg['message_sent'],
                 $msg['sender_deleted'],
                 $msg['recipient_deleted']
+            );
+        }
+        if(!isset($return))
+            $return = [];
+        return $return;
+    }
+
+    public function getUsersForMessages($id_user)
+    {
+        $statement = $this->database->connect()->prepare('
+            SELECT users.email FROM users
+                LEFT JOIN messages on users.id = messages.id_recipient
+            WHERE messages.id_sender = :id_user OR messages.id_recipient = :id_user
+            ORDER BY messages.message_sent DESC
+        ');
+
+        $statement->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach($users as $user)
+        {
+            $return[] = new User(
+                $user['email'],
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
             );
         }
         if(!isset($return))
